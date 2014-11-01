@@ -58,7 +58,7 @@ set gdefault  " global matching is default
 set smartcase " use smartcase, when search query starts with Uppercase, turn off case insensitive search
 
 " NERDTree
-" let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_open_on_console_startup=1
 let g:nerdtree_tabs_smart_startup_focus=1
 
 " indentation
@@ -111,7 +111,7 @@ Plugin 'edkolev/tmuxline.vim' " I'm still not sure about what it really does
 
 " color schemes and code highlighting
 Plugin 'flazz/vim-colorschemes' " choose the coolest colorscheme
-Plugin 'chrishunt/color-schemes'
+" Plugin 'chrishunt/color-schemes'
 Plugin 'vim-ruby/vim-ruby' " Ruby highlighting
 Plugin 'jelera/vim-javascript-syntax' " JavaScript highlighting
 Plugin 'kchmck/vim-coffee-script' " CoffeeScript highlighting
