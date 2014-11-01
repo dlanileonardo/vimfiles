@@ -8,7 +8,7 @@ filetype indent on
 filetype plugin on
 
 " defaults
-colorscheme hybrid " set colorscheme
+colorscheme Monokai " set colorscheme
 set encoding=utf-8 " set charset encoding
 set number "show line numbers
 set history=1000 " store lots of :cmdline history
@@ -49,7 +49,7 @@ if has('gui_running')
 endif
 
 " main key
-let mapleader=","
+let mapleader="\\"
 
 " search
 set hlsearch   " highlight search matches
@@ -58,7 +58,7 @@ set gdefault  " global matching is default
 set smartcase " use smartcase, when search query starts with Uppercase, turn off case insensitive search
 
 " NERDTree
-let g:nerdtree_tabs_open_on_console_startup=1
+" let g:nerdtree_tabs_open_on_console_startup=1
 let g:nerdtree_tabs_smart_startup_focus=1
 
 " indentation
@@ -99,6 +99,11 @@ set statusline+=%-14.(%l,%c%V%)\ %<%P " offset
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" ag.vim ignore log and tmp
+if !exists("g:agprg")
+    let g:agprg="ag --ignore ./log --ignore ./tmp --nogroup --column"
+endif
+
 " core plugins
 Plugin 'gmarik/Vundle.vim' " Vundle itself
 Plugin 'bling/vim-airline' " bottom bar + tabs
@@ -106,6 +111,7 @@ Plugin 'edkolev/tmuxline.vim' " I'm still not sure about what it really does
 
 " color schemes and code highlighting
 Plugin 'flazz/vim-colorschemes' " choose the coolest colorscheme
+Plugin 'chrishunt/color-schemes'
 Plugin 'vim-ruby/vim-ruby' " Ruby highlighting
 Plugin 'jelera/vim-javascript-syntax' " JavaScript highlighting
 Plugin 'kchmck/vim-coffee-script' " CoffeeScript highlighting
@@ -129,6 +135,7 @@ Plugin 'tpope/vim-abolish' " find/replace on steroids
 Plugin 'Valloric/YouCompleteMe' " autocomplete (needs to install and configure cmake)
 Plugin 'tomtom/tcomment_vim' " comment code
 Plugin 'tpope/vim-endwise' " close 'if', 'def' etc
+Plugin 'vasconcelloslf/vim-interestingwords'
 
 " end Vundle
 call vundle#end()
@@ -173,7 +180,7 @@ nnoremap <leader>v <C-w>v<C-w>l
 nnoremap <leader>h :split<CR>
 
 " Save like a pro (CTRL+s)
-nnoremap <c-s> :w<cr>
+nnoremap <C-s> :w<CR>
 
 " Quit like a pro
 nnoremap <C-M-q> :Kwbd<CR>
@@ -193,11 +200,16 @@ nmap <leader><space> :noh<cr>
 " start ag search
 nnoremap <leader>a :Ag 
 
+" buffer - moving around
+map <C-Left> :bprevious<CR>
+map <C-Right> :bnext<CR>
+map <C-Down> :bdelete<CR>
+
 " tabs - moving around, (CTRL+t to new tab)
 map <C-t> :tabnew<CR>
 map <C-M-n> :tabedit %<CR>
-" map <C-l> :tabnext<cr>
-" map <C-h> :tabprevious<cr>
+map <C-l> :tabnext<cr>
+map <C-h> :tabprevious<cr>
 
 if has("gui_macvim")
   " Press Ctrl-Tab to switch between open tabs (like browser tabs) to
