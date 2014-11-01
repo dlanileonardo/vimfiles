@@ -8,7 +8,10 @@ filetype indent on
 filetype plugin on
 
 " defaults
-colorscheme Monokai " set colorscheme
+colorscheme gruvbox " set colorscheme
+set background=dark
+let g:gruvbox_termcolors=256
+set t_Co=256
 set encoding=utf-8 " set charset encoding
 set number "show line numbers
 set history=1000 " store lots of :cmdline history
@@ -111,7 +114,8 @@ Plugin 'edkolev/tmuxline.vim' " I'm still not sure about what it really does
 
 " color schemes and code highlighting
 Plugin 'flazz/vim-colorschemes' " choose the coolest colorscheme
-" Plugin 'chrishunt/color-schemes'
+Plugin 'chrishunt/color-schemes'
+Plugin 'morhetz/gruvbox'
 Plugin 'vim-ruby/vim-ruby' " Ruby highlighting
 Plugin 'jelera/vim-javascript-syntax' " JavaScript highlighting
 Plugin 'kchmck/vim-coffee-script' " CoffeeScript highlighting
@@ -124,6 +128,8 @@ Plugin 'https://github.com/kien/ctrlp.vim' " awesome fuzzy finder
 Plugin 'jlanzarotta/bufexplorer' " search for files that have been changed
 Plugin 'rking/ag.vim' " search for a pattern through the directories (need to install the_silver_searcher)
 Plugin 'scrooloose/nerdtree' " file system tree
+Plugin 'majutsushi/tagbar'
+" Plugin 'vim-scripts/taglist.vim'
 
 " utils
 Plugin 'sjl/gundo.vim' " keep tracking of all undos
@@ -166,6 +172,9 @@ let g:ctrlp_custom_ignore = {
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
+
+" TagBar
+nmap <F8> :TagbarToggle<CR>
 
 " convenient viewport switching
 map <C-h> <C-w>j
