@@ -11,7 +11,7 @@ A lean and useful expansion for the awesome Vim editor. Give it a try :-)
 - Find patterns through serveral files ([ag.vim](https://github.com/rking/ag.vim));
 - Very fast fuzzy finder ([CtrlP](https://github.com/kien/ctrlp.vim));
 - Easy tab management: Command-number (⌘1, ⌘2 etc), Command-Tab (next tab), Command-Shift-Tab (previous tab).
-- Jump to Methods or Properties declaration with F8
+- Jump to Methods or Properties declaration with F8 ([Tagbar](https://github.com/majutsushi/tagbar))
 
 # Screenshot
 
