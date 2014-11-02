@@ -48,7 +48,7 @@ vim .
 
 Then enter:
 
-:PluginInstall
+```:PluginInstall```
 
 **5\. Install and configure some plugin's dependencies:**
 
@@ -60,10 +60,12 @@ ln -s bundle/base16-vim/colors
 ```
 
 **Ubuntu/Debian(Guake):**
-```gconftool --load /usr/local/etc/vimfiles/guake.settings```
+
+```$ gconftool --load /usr/local/etc/vimfiles/guake.settings```
 
 **Ubuntu/Debian(Gnome-Terminal):**
-```gconftool --load /usr/local/etc/vimfiles/gnome-terminal.settings```
+
+```$ gconftool --load /usr/local/etc/vimfiles/gnome-terminal.settings```
 
 5.2. For ag.vim:
 
