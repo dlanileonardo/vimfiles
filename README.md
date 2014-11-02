@@ -74,6 +74,8 @@ ln -s bundle/vim-colorschemes/colors colors
 
 5.3. For YouCompleteMe:
 
+**OS X:**
+
 ```
 $ brew install cmake
 $ cd ~
@@ -81,6 +83,13 @@ $ mkdir ycm_build
 $ cd ycm_build
 $ cmake -G "Unix Makefiles" . ~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp
 $ make ycm_support_libs
+```
+
+**Ubuntu/Debian:**
+
+```
+$ cd ~/.vim/bundle/YouCompleteMe
+$ ./install.sh
 ```
 
 5.4 For TagBar
