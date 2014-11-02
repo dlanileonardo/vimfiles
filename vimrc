@@ -190,7 +190,7 @@ nnoremap <leader>v <C-w>v<C-w>l
 nnoremap <leader>h :split<CR>
 
 " Save like a pro (CTRL+s)
-nnoremap <C-s> :w<CR>
+nnoremap <C-w> :w<CR>
 
 " Quit like a pro
 nnoremap <C-M-q> :Kwbd<CR>
@@ -238,4 +238,3 @@ if has("gui_macvim")
   noremap <D-8> :tabn 8<CR>
   noremap <D-9> :tabn 9<CR>
 endif
-
