@@ -22,60 +22,74 @@ A lean and useful expansion for the awesome Vim editor. Give it a try :-)
 **1\. Clone this repo:**
 
 ```
-cd  /usr/local/etc
+$ cd  /usr/local/etc
 ```
 Ps.: if you're on GNU/Linux, you may download it to "/usr/local/src".
 
 ```
-git clone https://github.com/tiagopog/vimfiles.git
+$ git clone https://github.com/tiagopog/vimfiles.git
 ```
 
 **2\. Make sure that Vim will find the vimrc file by symlinking it:**
 
-```ln -s /usr/local/etc/vimfiles/vimrc ~/.vimrc```
+```
+$ ln -s /usr/local/etc/vimfiles/vimrc ~/.vimrc
+```
 
 **3\. Install Vundle:**
 
-```git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim```
+```
+$ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
 
 (for more information: https://github.com/gmarik/Vundle.vim)
 
 **4\. Open Vim, press ENTER ignoring the warnings, and install the plugins:**
 
 ```
-vim .
+$ vim .
 ```
 
 Then enter:
 
-```:PluginInstall```
+```
+:PluginInstall
+```
 
 **5\. Install and configure some plugin's dependencies:**
 
 5.1. For vim-colorschemes: 
 
 ```
-cd ~/.vim
-ln -s bundle/base16-vim/colors
+$ cd ~/.vim
+$ ln -s bundle/base16-vim/colors
 ```
 
 **Ubuntu/Debian(Guake):**
 
-```$ gconftool --load /usr/local/etc/vimfiles/guake.settings```
+```
+$ gconftool --load /usr/local/etc/vimfiles/guake.settings
+```
 
 **Ubuntu/Debian(Gnome-Terminal):**
 
-```$ gconftool --load /usr/local/etc/vimfiles/gnome-terminal.settings```
+```
+$ gconftool --load /usr/local/etc/vimfiles/gnome-terminal.settings
+```
 
 5.2. For ag.vim:
 
 **OS X:**
 
-```brew install the_silver_searcher```
+```
+$ brew install the_silver_searcher
+```
 
 **Ubuntu/Debian:**
 
-```apt-get install silversearcher-ag```
+```
+$ apt-get install silversearcher-ag
+```
 
 **CentOS:** [try building it from source](https://github.com/ggreer/the_silver_searcher#building-from-source). 
 
