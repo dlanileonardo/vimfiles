@@ -65,13 +65,19 @@ $ cd ~/.vim
 $ ln -s bundle/base16-vim/colors
 ```
 
-Install Pallete Base16 Colors: https://github.com/chriskempson/base16-builder
+**Install Pallete Base16 Colors:** 
+
+https://github.com/chriskempson/base16-builder
+
+or
 
 **Ubuntu/Debian(Guake):**
 
 ```
 $ gconftool --load /usr/local/etc/vimfiles/guake.settings
 ```
+
+or
 
 **Ubuntu/Debian(Gnome-Terminal):**
 
