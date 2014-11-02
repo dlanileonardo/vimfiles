@@ -8,8 +8,10 @@ filetype indent on
 filetype plugin on
 
 " defaults
-colorscheme railscasts " set colorscheme
-set t_Co=256
+colorscheme base16-default " set colorscheme
+let base16colorspace=16
+set background=dark
+set t_Co=16
 set t_ut=
 set encoding=utf-8 " set charset encoding
 set number "show line numbers
@@ -110,10 +112,12 @@ endif
 Plugin 'gmarik/Vundle.vim' " Vundle itself
 Plugin 'bling/vim-airline' " bottom bar + tabs
 Plugin 'edkolev/tmuxline.vim' " I'm still not sure about what it really does
+Plugin 'bling/vim-bufferline'
 
 " color schemes and code highlighting
 Plugin 'flazz/vim-colorschemes' " choose the coolest colorscheme
 Plugin 'chrishunt/color-schemes'
+Plugin 'chriskempson/base16-vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'vim-ruby/vim-ruby' " Ruby highlighting
 Plugin 'jelera/vim-javascript-syntax' " JavaScript highlighting
@@ -153,7 +157,7 @@ filetype plugin indent on
 " enable vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='powerlineish'
+let g:airline_theme='wombat'
 
 " Gundo
 nnoremap <F5> :GundoToggle<CR>
