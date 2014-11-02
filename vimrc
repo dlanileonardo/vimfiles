@@ -242,3 +242,7 @@ if has("gui_macvim")
   noremap <D-8> :tabn 8<CR>
   noremap <D-9> :tabn 9<CR>
 endif
+
+" YouCompleteMe
+highlight Pmenu ctermfg=black ctermbg=grey gui=bold
+highlight PmenuSel ctermfg=black ctermbg=red gui=bold
