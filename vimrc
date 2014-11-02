@@ -8,9 +8,7 @@ filetype indent on
 filetype plugin on
 
 " defaults
-colorscheme gruvbox " set colorscheme
-set background=dark
-let g:gruvbox_termcolors=256
+colorscheme railscasts " set colorscheme
 set t_Co=256
 set t_ut=
 set encoding=utf-8 " set charset encoding
@@ -154,6 +152,8 @@ filetype plugin indent on
 
 " enable vim-airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='powerlineish'
 
 " Gundo
 nnoremap <F5> :GundoToggle<CR>
@@ -173,6 +173,7 @@ let g:ctrlp_custom_ignore = {
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
+map <F7> :NERDTreeToggle<CR>
 
 " TagBar
 nmap <F8> :TagbarToggle<CR>
@@ -190,7 +191,7 @@ nnoremap <leader>v <C-w>v<C-w>l
 nnoremap <leader>h :split<CR>
 
 " Save like a pro (CTRL+s)
-nnoremap <C-w> :w<CR>
+nnoremap <leader>w :w<CR>
 
 " Quit like a pro
 nnoremap <C-M-q> :Kwbd<CR>
@@ -218,8 +219,7 @@ map <C-Down> :bdelete<CR>
 " tabs - moving around, (CTRL+t to new tab)
 map <C-t> :tabnew<CR>
 map <C-M-n> :tabedit %<CR>
-map <C-l> :tabnext<cr>
-map <C-h> :tabprevious<cr>
+map <C-l> :tabnext<CR>
 
 if has("gui_macvim")
   " Press Ctrl-Tab to switch between open tabs (like browser tabs) to

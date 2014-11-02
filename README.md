@@ -84,6 +84,11 @@ $ make ycm_support_libs
 ```
 
 5.4 For TagBar
+
 ```
 $ sudo apt-get install ctags
 ```
+
+5.5 Powerline Fonts
+
+Install Powerline: https://github.com/Lokaltog/powerline-fonts
