@@ -12,6 +12,7 @@ colorscheme gruvbox " set colorscheme
 set background=dark
 let g:gruvbox_termcolors=256
 set t_Co=256
+set t_ut=
 set encoding=utf-8 " set charset encoding
 set number "show line numbers
 set history=1000 " store lots of :cmdline history
