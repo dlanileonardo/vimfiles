@@ -115,16 +115,17 @@ Plugin 'edkolev/tmuxline.vim' " I'm still not sure about what it really does
 Plugin 'bling/vim-bufferline'
 
 " color schemes and code highlighting
-Plugin 'flazz/vim-colorschemes' " choose the coolest colorscheme
-Plugin 'chrishunt/color-schemes'
+" Plugin 'flazz/vim-colorschemes' " choose the coolest colorscheme
+" Plugin 'chrishunt/color-schemes'
 Plugin 'chriskempson/base16-vim'
-Plugin 'morhetz/gruvbox'
+" Plugin 'morhetz/gruvbox'
 Plugin 'vim-ruby/vim-ruby' " Ruby highlighting
 Plugin 'jelera/vim-javascript-syntax' " JavaScript highlighting
 Plugin 'kchmck/vim-coffee-script' " CoffeeScript highlighting
 Plugin 'skammer/vim-css-color' " CSS highlighting
 Plugin 'cakebaker/scss-syntax.vim' " SCSS highlighting
 Plugin 'slim-template/vim-slim' " Slim highlighting
+Plugin 'tomtom/checksyntax_vim' " Check Syntax of files on Saves
 
 " file navigation/search
 Plugin 'https://github.com/kien/ctrlp.vim' " awesome fuzzy finder
@@ -159,6 +160,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='wombat'
 
+" Refresh File
+nnoremap <leader>r :e<CR>
+
 " Gundo
 nnoremap <F5> :GundoToggle<CR>
 
@@ -174,6 +178,9 @@ let g:ctrlp_custom_ignore = {
       \ 'dir':  '\v[\/]\.(git|hg|svn)$',
       \ 'file': '\v\.(exe|so|dll)$'
       \ }
+
+" Clear Search Highlight
+map <F3> :let @/ = ""<CR>
 
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
