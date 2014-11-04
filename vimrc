@@ -3,18 +3,15 @@ set nocompatible
 
 syntax on
 
-filetype on
-filetype indent on
-filetype plugin on
+filetype off
 
-" defaults
 colorscheme base16-default " set colorscheme
 let base16colorspace=16
 set background=dark
 set t_Co=16
 set t_ut=
 set encoding=utf-8 " set charset encoding
-set number "show line numbers
+" set number "show line numbers
 set history=1000 " store lots of :cmdline history
 set showcmd " show incomplete cmds down the bottom
 set showmode " show current mode down the bottom
@@ -34,6 +31,8 @@ set lazyredraw " get faster, redraw only when it's needed
 set shiftround " round the indent to shiftwidth (when at 3 spaces, and I hit > go to 4, not 5)
 set shiftwidth=2 " auto-indent amount when using >> <<
 set softtabstop=2 " when hitting tab or backspace, how many spaces should a tab be (see expandtab)
+" set cursorline " draws a horizontal highlight (or underline, depending on your colorscheme) on the line your cursor is currently on.
+set showmatch " when your cursor moves over a parenthesis-like character, the matching one will be highlighted as well. 
 
 let loaded_matchparen=1 " match paranthesis
 
@@ -54,6 +53,15 @@ endif
 
 " main key
 let mapleader="\\"
+
+" Folding
+set foldenable " enable folding
+set foldlevelstart=10 " open most folds by default
+set foldnestmax=10
+
+" space open/closes folds
+nnoremap <space> za
+set foldmethod=indent " fold based on indent level
 
 " search
 set hlsearch   " highlight search matches
@@ -115,15 +123,14 @@ Plugin 'edkolev/tmuxline.vim' " I'm still not sure about what it really does
 Plugin 'bling/vim-bufferline'
 
 " color schemes and code highlighting
-" Plugin 'flazz/vim-colorschemes' " choose the coolest colorscheme
-" Plugin 'chrishunt/color-schemes'
 Plugin 'chriskempson/base16-vim'
-" Plugin 'morhetz/gruvbox'
 Plugin 'vim-ruby/vim-ruby' " Ruby highlighting
 Plugin 'jelera/vim-javascript-syntax' " JavaScript highlighting
 Plugin 'kchmck/vim-coffee-script' " CoffeeScript highlighting
 Plugin 'skammer/vim-css-color' " CSS highlighting
+Plugin 'hail2u/vim-css3-syntax'
 Plugin 'cakebaker/scss-syntax.vim' " SCSS highlighting
+Plugin 'groenewege/vim-less'
 Plugin 'slim-template/vim-slim' " Slim highlighting
 Plugin 'tomtom/checksyntax_vim' " Check Syntax of files on Saves
 
@@ -133,12 +140,11 @@ Plugin 'jlanzarotta/bufexplorer' " search for files that have been changed
 Plugin 'rking/ag.vim' " search for a pattern through the directories (need to install the_silver_searcher)
 Plugin 'scrooloose/nerdtree' " file system tree
 Plugin 'majutsushi/tagbar'
-" Plugin 'vim-scripts/taglist.vim'
 
 " utils
 Plugin 'sjl/gundo.vim' " keep tracking of all undos
 Plugin 'scrooloose/syntastic' " syntax analyzer
-Plugin 'airblade/vim-gitgutter' " mark lines that have been changed according to Git
+" Plugin 'airblade/vim-gitgutter' " mark lines that have been changed according to Git
 Plugin 'tpope/vim-fugitive' " Vim + Git
 Plugin 'tpope/vim-surround' " edit what's surrounding a snippet of code
 Plugin 'tpope/vim-abolish' " find/replace on steroids
@@ -160,6 +166,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='wombat'
 
+" Git gutte" let g:gitgutter_sign_added = '++'
+" let g:gitgutter_sign_added = '++'
+" let g:gitgutter_sign_removed = '--'
+" let g:gitgutter_sign_removed_first_line = '^^'
+" let g:gitgutter_sign_modified_removed = 'ww'
+
 " Refresh File
 nnoremap <leader>r :e<CR>
 
@@ -171,6 +183,9 @@ nnoremap <F6> :BufExplorerHorizontalSplit<CR>
 
 " tComment
 map <C-c> :TComment<CR>
+
+" tNumber Line
+nnoremap <F4> :set nonumber!<CR>
 
 " CtrlP
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip " ignore file (OSX/Linux)
@@ -252,4 +267,6 @@ endif
 
 " YouCompleteMe
 highlight Pmenu ctermfg=black ctermbg=grey gui=bold
-highlight PmenuSel ctermfg=black ctermbg=red gui=bold
+highlight PmenuSel ctermfg=yellow ctermbg=darkgrey gui=bold
+
+
