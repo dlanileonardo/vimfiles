@@ -31,7 +31,7 @@ set lazyredraw " get faster, redraw only when it's needed
 set shiftround " round the indent to shiftwidth (when at 3 spaces, and I hit > go to 4, not 5)
 set shiftwidth=2 " auto-indent amount when using >> <<
 set softtabstop=2 " when hitting tab or backspace, how many spaces should a tab be (see expandtab)
-" set cursorline " draws a horizontal highlight (or underline, depending on your colorscheme) on the line your cursor is currently on.
+set cursorline " draws a horizontal highlight (or underline, depending on your colorscheme) on the line your cursor is currently on.
 set showmatch " when your cursor moves over a parenthesis-like character, the matching one will be highlighted as well. 
 
 let loaded_matchparen=1 " match paranthesis
@@ -275,6 +275,9 @@ endif
 highlight Pmenu ctermfg=black ctermbg=grey gui=bold
 highlight PmenuSel ctermfg=yellow ctermbg=darkgrey gui=bold
 
+" Cursor Line
+highlight CursorLine ctermbg=darkred ctermfg=white gui=bold
+
 " Toggle Vexplore with Ctrl-E
 function! ToggleVExplorer()
   if exists("t:expl_buf_num")
@@ -290,7 +293,7 @@ function! ToggleVExplorer()
       endif
   else
       exec '1wincmd w'
-      Vexplore 25
+      Vexplore
       let t:expl_buf_num = bufnr("%")
   endif
 endfunction
@@ -306,6 +309,14 @@ let g:netrw_altv = 1
 let g:netrw_liststyle=3
 let g:netrw_banner=0
 let g:netrw_sort_options = 'i'
+" sort is affecting only: directories on the top, files below
+let g:netrw_sort_sequence = '[\/]$,*'
+
+" absolute width of netrw window
+let g:netrw_winsize = -28
 
 " Change directory to the current buffer when opening files.
-set autochdir
+" set autochdir
+"
+
+
