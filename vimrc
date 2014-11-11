@@ -70,8 +70,13 @@ set gdefault  " global matching is default
 set smartcase " use smartcase, when search query starts with Uppercase, turn off case insensitive search
 
 " NERDTree
-let g:nerdtree_tabs_open_on_console_startup=1
-let g:nerdtree_tabs_smart_startup_focus=1
+" let g:nerdtree_tabs_open_on_console_startup=1
+" let g:nerdtree_tabs_smart_startup_focus=1
+
+" let g:netrw_liststyle=3
+" let g:netrw_keepdir=0
+
+
 
 " indentation
 set autoindent
@@ -138,7 +143,7 @@ Plugin 'tomtom/checksyntax_vim' " Check Syntax of files on Saves
 Plugin 'https://github.com/kien/ctrlp.vim' " awesome fuzzy finder
 Plugin 'jlanzarotta/bufexplorer' " search for files that have been changed
 Plugin 'rking/ag.vim' " search for a pattern through the directories (need to install the_silver_searcher)
-Plugin 'scrooloose/nerdtree' " file system tree
+" Plugin 'scrooloose/nerdtree' " file system tree
 Plugin 'majutsushi/tagbar'
 
 " utils
@@ -152,6 +157,7 @@ Plugin 'Valloric/YouCompleteMe' " autocomplete (needs to install and configure c
 Plugin 'tomtom/tcomment_vim' " comment code
 Plugin 'tpope/vim-endwise' " close 'if', 'def' etc
 Plugin 'vasconcelloslf/vim-interestingwords'
+Plugin 'vim-scripts/PreserveNoEOL'
 
 " end Vundle
 call vundle#end()
@@ -198,8 +204,8 @@ let g:ctrlp_custom_ignore = {
 map <F3> :let @/ = ""<CR>
 
 " NERDTree
-map <C-n> :NERDTreeToggle<CR>
-map <F7> :NERDTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
+" map <F7> :NERDTreeToggle<CR>
 
 " TagBar
 nmap <F8> :TagbarToggle<CR>
@@ -240,7 +246,7 @@ nnoremap <leader>a :Ag
 " buffer - moving around
 map <C-Left> :bprevious<CR>
 map <C-Right> :bnext<CR>
-map <C-Down> :bdelete<CR>
+map <C-Down> :bdelete!<CR>
 
 " tabs - moving around, (CTRL+t to new tab)
 map <C-t> :tabnew<CR>
@@ -269,4 +275,37 @@ endif
 highlight Pmenu ctermfg=black ctermbg=grey gui=bold
 highlight PmenuSel ctermfg=yellow ctermbg=darkgrey gui=bold
 
+" Toggle Vexplore with Ctrl-E
+function! ToggleVExplorer()
+  if exists("t:expl_buf_num")
+      let expl_win_num = bufwinnr(t:expl_buf_num)
+      if expl_win_num != -1
+          let cur_win_nr = winnr()
+          exec expl_win_num . 'wincmd w'
+          close
+          exec cur_win_nr . 'wincmd w'
+          unlet t:expl_buf_num
+      else
+          unlet t:expl_buf_num
+      endif
+  else
+      exec '1wincmd w'
+      Vexplore 25
+      let t:expl_buf_num = bufnr("%")
+  endif
+endfunction
+map <silent> <C-n> :call ToggleVExplorer()<CR>
+map <F7> :call ToggleVExplorer()<CR>
 
+" Hit enter in the file browser to open the selected
+" file with :vsplit to the right of the browser.
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+
+" Default to tree mode
+let g:netrw_liststyle=3
+let g:netrw_banner=0
+let g:netrw_sort_options = 'i'
+
+" Change directory to the current buffer when opening files.
+set autochdir
