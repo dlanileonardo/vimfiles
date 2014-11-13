@@ -131,3 +131,7 @@ $ sudo apt-get install ctags
 5.5 Powerline Fonts
 
 Install Powerline: https://github.com/Lokaltog/powerline-fonts
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dlanileonardo/vimfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
