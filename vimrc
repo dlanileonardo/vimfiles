@@ -11,7 +11,7 @@ set background=dark
 set t_Co=16
 set t_ut=
 set encoding=utf-8 " set charset encoding
-" set number "show line numbers
+set number "show line numbers
 set history=1000 " store lots of :cmdline history
 set showcmd " show incomplete cmds down the bottom
 set showmode " show current mode down the bottom
@@ -131,45 +131,38 @@ Plugin 'slim-template/vim-slim' " Slim highlighting
 Plugin 'tomtom/checksyntax_vim' " Check Syntax of files on Saves
 
 " file navigation/search
-Plugin 'https://github.com/kien/ctrlp.vim' " awesome fuzzy finder
+Plugin 'Shougo/vimproc.vim'
 Plugin 'jlanzarotta/bufexplorer' " search for files that have been changed
 Plugin 'rking/ag.vim' " search for a pattern through the directories (need to install the_silver_searcher)
 Plugin 'majutsushi/tagbar'
 Plugin 'skwp/greplace.vim'
+Plugin 'Shougo/unite.vim'
 
 " utils
 Plugin 'sjl/gundo.vim' " keep tracking of all undos
-" Plugin 'scrooloose/syntastic' " syntax analyzer
-" Plugin 'airblade/vim-gitgutter' " mark lines that have been changed according to Git
+Plugin 'scrooloose/syntastic' " syntax analyzer
 Plugin 'tpope/vim-fugitive' " Vim + Git
-" Plugin 'tpope/vim-surround' " edit what's surrounding a snippet of code
+Plugin 'tpope/vim-surround' " edit what's surrounding a snippet of code
 Plugin 'tpope/vim-abolish' " find/replace on steroids
 Plugin 'Valloric/YouCompleteMe' " autocomplete (needs to install and configure cmake)
 Plugin 'tomtom/tcomment_vim' " comment code
 Plugin 'tpope/vim-endwise' " close 'if', 'def' etc
-Plugin 'vasconcelloslf/vim-interestingwords'
-Plugin 'vim-scripts/PreserveNoEOL'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'mattn/emmet-vim'
+Plugin 'vasconcelloslf/vim-interestingwords' " Like Sublime Highlight Words
+Plugin 'vim-scripts/PreserveNoEOL' " Prevent remove EOL in Final Lines
+Plugin 'terryma/vim-multiple-cursors' " Multi Cursors Like Sublime
+Plugin 'mattn/emmet-vim' " Emmet =]
+
+" Emmet map
+let g:user_emmet_leader_key='<C-E>'
 
 " end Vundle
 call vundle#end()
 filetype plugin indent on
 
-""
-" key mapping & stuff
-""
-
 " enable vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='wombat'
-
-" Git gutte" let g:gitgutter_sign_added = '++'
-" let g:gitgutter_sign_added = '++'
-" let g:gitgutter_sign_removed = '--'
-" let g:gitgutter_sign_removed_first_line = '^^'
-" let g:gitgutter_sign_modified_removed = 'ww'
 
 " Refresh File
 nnoremap <leader>r :e<CR>
@@ -242,9 +235,21 @@ map <C-Right> :bnext<CR>
 map <C-Down> :bdelete!<CR>
 
 " tabs - moving around, (CTRL+t to new tab)
-map <C-t> :tabnew<CR>
-map <C-M-n> :tabedit %<CR>
-map <C-l> :tabnext<CR>
+noremap <C-PageUp> :tabprev<CR>
+noremap <C-PageDown> :tabnext<CR>
+noremap <C-Up> :tabnew<CR>
+
+" noremap <leader>s :w<CR>
+" noremap <leader>S :saveas %<CR>
+" noremap <C-Home> :tabedit %<CR>
+
+" nmap <c-s> :w<CR>
+" vmap <c-s> <Esc><c-s>gv
+" imap <c-s> <Esc><c-s>
+
+nmap <F10> :update<CR>
+vmap <F10> <Esc><F10>gv
+imap <F10> <c-o><F10>
 
 if has("gui_macvim")
   " Press Ctrl-Tab to switch between open tabs (like browser tabs) to
@@ -271,7 +276,14 @@ highlight PmenuSel ctermfg=yellow ctermbg=darkgrey gui=bold
 " Cursor Line
 highlight CursorLine ctermbg=darkgrey ctermfg=white
 
-" Toggle Vexplore with Ctrl-E
+" Number Column
+highlight LineNr ctermfg=green ctermbg=black gui=bold
+highlight CursorLineNr ctermfg=black ctermbg=green gui=bold
+
+" Gutter / Signs
+highlight SignColumn ctermbg=black guibg=black
+
+" Toggle Vexplore like NerdTree
 function! ToggleVExplorer()
   if exists("t:expl_buf_num")
       let expl_win_num = bufwinnr(t:expl_buf_num)
@@ -292,24 +304,54 @@ function! ToggleVExplorer()
 endfunction
 map <silent> <C-n> :call ToggleVExplorer()<CR>
 map <F7> :call ToggleVExplorer()<CR>
-
-" Hit enter in the file browser to open the selected
-" file with :vsplit to the right of the browser.
+let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_altv = 1
-
-" Default to tree mode
-let g:netrw_liststyle=3
-let g:netrw_banner=0
-let g:netrw_sort_options = 'i'
-" sort is affecting only: directories on the top, files below
-let g:netrw_sort_sequence = '[\/]$,*'
-
-" absolute width of netrw window
 let g:netrw_winsize = 25
+let g:netrw_banner = 0
+let g:netrw_list_hide = &wildignore
+set autochdir
 
-" Change directory to the current buffer when opening files.
-" set autochdir
-"
 
+" Unite
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Unite
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:unite_enable_start_insert = 1
+let g:unite_split_rule = "botright"
+let g:unite_force_overwrite_statusline = 0
+let g:unite_winheight = 10
+let g:unite_source_history_yank_enable = 1
+let g:unite_data_directory='~/.vim/.cache/unite'
 
+if executable('ag')
+  let g:unite_source_grep_command='ag'
+  let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
+  let g:unite_source_grep_recursive_opt=''
+endif
+
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+      \ 'ignore_pattern', join([
+      \ '\.git/',
+      \ ], '\|'))
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+
+nnoremap <C-P> :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
+nnoremap <space>f :Unite grep:.<cr>
+nnoremap <space>y :Unite history/yank<cr>
+nnoremap <space>s :Unite -quick-match buffer<cr>
+
+autocmd FileType unite call s:unite_settings()
+
+function! s:unite_settings()
+  let b:SuperTabDisabled=1
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+  imap <silent><buffer><expr> <C-x> unite#do_action('split')
+  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+  imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+
+  nmap <buffer> <ESC> <Plug>(unite_exit)
+endfunction
