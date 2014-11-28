@@ -11,7 +11,7 @@ set background=dark
 set t_Co=16
 set t_ut=
 set encoding=utf-8 " set charset encoding
-set number "show line numbers
+" set number "show line numbers
 set history=1000 " store lots of :cmdline history
 set showcmd " show incomplete cmds down the bottom
 set showmode " show current mode down the bottom
@@ -25,7 +25,7 @@ set linebreak " wrap lines at convenient points
 set equalalways " split windows equally
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.jpg,*.gif,*.png " there files will be ignored when completing in wild menu
 set clipboard+=unnamed,unnamedplus,autoselect " share clipboard
-set ttyfast " I  got a fast terminal!
+set ttyfast " I  gOt a fast terminal!
 set ttimeoutlen=50  " make Esc work faster
 set lazyredraw " get faster, redraw only when it's needed
 set shiftround " round the indent to shiftwidth (when at 3 spaces, and I hit > go to 4, not 5)
@@ -33,6 +33,7 @@ set shiftwidth=2 " auto-indent amount when using >> <<
 set softtabstop=2 " when hitting tab or backspace, how many spaces should a tab be (see expandtab)
 set cursorline " draws a horizontal highlight (or underline, depending on your colorscheme) on the line your cursor is currently on.
 set showmatch " when your cursor moves over a parenthesis-like character, the matching one will be highlighted as well. 
+set novisualbell " Disable visual blink
 
 let loaded_matchparen=1 " match paranthesis
 
@@ -44,7 +45,7 @@ if has('gui_running')
   set guioptions-=r  "remove right-hand scroll bar
   set guioptions-=l
   set guioptions-=h
-  set guioptions-=b
+  set guioptions-=B
   set guioptions-=R
   set guioptions-=L
   set showtabline=2   " show tabs in gvim, not vim
@@ -64,7 +65,7 @@ nnoremap <space> za
 set foldmethod=indent " fold based on indent level
 
 " search
-set hlsearch   " highlight search matches
+set hlsearch   " higHlight search matches
 set incsearch " search as you type
 set gdefault  " global matching is default
 set smartcase " use smartcase, when search query starts with Uppercase, turn off case insensitive search
@@ -82,6 +83,11 @@ set expandtab
 set scrolloff=8 " start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
+
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+" noremap <silent> <c-u> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+" noremap <silent> <c-d> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " tabs
 set expandtab " no real tabs!
@@ -151,6 +157,8 @@ Plugin 'vasconcelloslf/vim-interestingwords' " Like Sublime Highlight Words
 Plugin 'vim-scripts/PreserveNoEOL' " Prevent remove EOL in Final Lines
 Plugin 'terryma/vim-multiple-cursors' " Multi Cursors Like Sublime
 Plugin 'mattn/emmet-vim' " Emmet =]
+Plugin 'sentientmonkey/vim-flog'
+Plugin 'terryma/vim-smooth-scroll'
 
 " Emmet map
 let g:user_emmet_leader_key='<C-E>'
@@ -282,6 +290,15 @@ highlight CursorLineNr ctermfg=black ctermbg=green gui=bold
 
 " Gutter / Signs
 highlight SignColumn ctermbg=black guibg=black
+
+" Flog Colors
+:let g:flog_low_color_hl = "term=standout ctermfg=green ctermbg=black guifg=green guibg=black"
+:let g:flog_medium_color_hl = "term=standout ctermfg=yellow ctermbg=black guifg=yellow guibg=black"
+:let g:flog_high_color_hl = "term=standout cterm=bold ctermfg=red ctermbg=black gui=bold guifg=red guibg=black"
+:let s:background_hl = "guifg=white guibg=black gui=NONE"
+" disable default
+:let g:flog_enable=0
+nmap <F9> :call ToggleFlog()<CR>
 
 " Toggle Vexplore like NerdTree
 function! ToggleVExplorer()
