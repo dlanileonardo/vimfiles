@@ -135,14 +135,18 @@ Plugin 'cakebaker/scss-syntax.vim' " SCSS highlighting
 Plugin 'groenewege/vim-less'
 Plugin 'slim-template/vim-slim' " Slim highlighting
 Plugin 'tomtom/checksyntax_vim' " Check Syntax of files on Saves
+" Plugin 'bronson/vim-trailing-whitespace'
+" Plugin 'nathanaelkane/vim-indent-guides'
 
 " file navigation/search
 Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimfiler.vim'
 Plugin 'jlanzarotta/bufexplorer' " search for files that have been changed
 Plugin 'rking/ag.vim' " search for a pattern through the directories (need to install the_silver_searcher)
 Plugin 'majutsushi/tagbar'
 Plugin 'skwp/greplace.vim'
-Plugin 'Shougo/unite.vim'
 
 " utils
 Plugin 'sjl/gundo.vim' " keep tracking of all undos
@@ -159,6 +163,7 @@ Plugin 'terryma/vim-multiple-cursors' " Multi Cursors Like Sublime
 Plugin 'mattn/emmet-vim' " Emmet =]
 Plugin 'sentientmonkey/vim-flog'
 Plugin 'terryma/vim-smooth-scroll'
+Plugin 'MattesGroeger/vim-bookmarks'
 
 " Emmet map
 let g:user_emmet_leader_key='<C-E>'
@@ -300,35 +305,38 @@ highlight SignColumn ctermbg=black guibg=black
 :let g:flog_enable=0
 nmap <F9> :call ToggleFlog()<CR>
 
-" Toggle Vexplore like NerdTree
-function! ToggleVExplorer()
-  if exists("t:expl_buf_num")
-      let expl_win_num = bufwinnr(t:expl_buf_num)
-      if expl_win_num != -1
-          let cur_win_nr = winnr()
-          exec expl_win_num . 'wincmd w'
-          close
-          exec cur_win_nr . 'wincmd w'
-          unlet t:expl_buf_num
-      else
-          unlet t:expl_buf_num
-      endif
-  else
-      exec '1wincmd w'
-      Vexplore
-      let t:expl_buf_num = bufnr("%")
-  endif
-endfunction
-map <silent> <C-n> :call ToggleVExplorer()<CR>
-map <F7> :call ToggleVExplorer()<CR>
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 25
-let g:netrw_banner = 0
-let g:netrw_list_hide = &wildignore
-set autochdir
+" VimShell
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VimShell
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>shell :VimShell -buffer-name=Console<CR>
 
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+if has('win32') || has('win64')
+  " Display user name on Windows.
+  let g:vimshell_prompt = $USERNAME."% "
+else
+  " Display user name on Linux.
+  let g:vimshell_prompt = $USER."% "
+endif
+
+" VimFiler
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => VimFIler
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <F7> :VimFilerExplorer<CR>
+
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_expand_jump_to_first_child = 0
+let g:vimfiler_enable_clipboard = 0
+let g:vimfiler_safe_mode_by_default = 0
+" Like Textmate icons.
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = '-'
+let g:vimfiler_readonly_file_icon = '✗'
+let g:vimfiler_marked_file_icon = '✓'
 
 " Unite
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -372,3 +380,26 @@ function! s:unite_settings()
 
   nmap <buffer> <ESC> <Plug>(unite_exit)
 endfunction
+
+let g:extra_whitespace_ignored_filetypes = ['vimfiler', 'unite']
+
+" Bookmarks
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Bookmarks
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+highlight BookmarkSign ctermbg=NONE ctermfg=1
+highlight BookmarkAnnotationSign ctermbg=NONE ctermfg=2
+
+highlight BookmarkLine ctermbg=1 ctermfg=NONE
+highlight BookmarkAnnotationLine ctermbg=2 ctermfg=NONE
+
+let g:bookmark_sign = '♥'
+let g:bookmark_highlight_lines = 0
+
+nmap <Leader>b <Plug>BookmarkToggle
+nmap <Leader>bi <Plug>BookmarkAnnotate
+nmap <Leader>ba <Plug>BookmarkShowAll
+nmap <Leader>bn <Plug>BookmarkNext
+nmap <Leader>bp <Plug>BookmarkPrev
+nmap <Leader>bc <Plug>BookmarkClear
+nmap <Leader>bx <Plug>BookmarkClearAll
