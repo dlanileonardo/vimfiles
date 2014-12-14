@@ -69,15 +69,6 @@ set incsearch " search as you type
 set gdefault  " global matching is default
 set smartcase " use smartcase, when search query starts with Uppercase, turn off case insensitive search
 
-" NERDTree
-" let g:nerdtree_tabs_open_on_console_startup=1
-" let g:nerdtree_tabs_smart_startup_focus=1
-
-" let g:netrw_liststyle=3
-" let g:netrw_keepdir=0
-
-
-
 " indentation
 set autoindent
 set smartindent
@@ -143,21 +134,23 @@ Plugin 'tomtom/checksyntax_vim' " Check Syntax of files on Saves
 Plugin 'https://github.com/kien/ctrlp.vim' " awesome fuzzy finder
 Plugin 'jlanzarotta/bufexplorer' " search for files that have been changed
 Plugin 'rking/ag.vim' " search for a pattern through the directories (need to install the_silver_searcher)
-" Plugin 'scrooloose/nerdtree' " file system tree
 Plugin 'majutsushi/tagbar'
+Plugin 'skwp/greplace.vim'
 
 " utils
 Plugin 'sjl/gundo.vim' " keep tracking of all undos
-Plugin 'scrooloose/syntastic' " syntax analyzer
+" Plugin 'scrooloose/syntastic' " syntax analyzer
 " Plugin 'airblade/vim-gitgutter' " mark lines that have been changed according to Git
 Plugin 'tpope/vim-fugitive' " Vim + Git
-Plugin 'tpope/vim-surround' " edit what's surrounding a snippet of code
+" Plugin 'tpope/vim-surround' " edit what's surrounding a snippet of code
 Plugin 'tpope/vim-abolish' " find/replace on steroids
 Plugin 'Valloric/YouCompleteMe' " autocomplete (needs to install and configure cmake)
 Plugin 'tomtom/tcomment_vim' " comment code
 Plugin 'tpope/vim-endwise' " close 'if', 'def' etc
 Plugin 'vasconcelloslf/vim-interestingwords'
 Plugin 'vim-scripts/PreserveNoEOL'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'mattn/emmet-vim'
 
 " end Vundle
 call vundle#end()
@@ -276,7 +269,7 @@ highlight Pmenu ctermfg=black ctermbg=grey gui=bold
 highlight PmenuSel ctermfg=yellow ctermbg=darkgrey gui=bold
 
 " Cursor Line
-highlight CursorLine ctermbg=darkred ctermfg=white gui=bold
+highlight CursorLine ctermbg=darkgrey ctermfg=white
 
 " Toggle Vexplore with Ctrl-E
 function! ToggleVExplorer()
@@ -313,7 +306,7 @@ let g:netrw_sort_options = 'i'
 let g:netrw_sort_sequence = '[\/]$,*'
 
 " absolute width of netrw window
-let g:netrw_winsize = -28
+let g:netrw_winsize = 25
 
 " Change directory to the current buffer when opening files.
 " set autochdir
