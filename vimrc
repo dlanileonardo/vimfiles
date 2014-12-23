@@ -86,8 +86,6 @@ set sidescroll=1
 
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-" noremap <silent> <c-u> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-" noremap <silent> <c-d> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " tabs
 set expandtab " no real tabs!
@@ -135,8 +133,6 @@ Plugin 'cakebaker/scss-syntax.vim' " SCSS highlighting
 Plugin 'groenewege/vim-less'
 Plugin 'slim-template/vim-slim' " Slim highlighting
 Plugin 'tomtom/checksyntax_vim' " Check Syntax of files on Saves
-" Plugin 'bronson/vim-trailing-whitespace'
-" Plugin 'nathanaelkane/vim-indent-guides'
 
 " file navigation/search
 Plugin 'Shougo/vimproc.vim'
@@ -164,6 +160,11 @@ Plugin 'mattn/emmet-vim' " Emmet =]
 Plugin 'sentientmonkey/vim-flog'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'MattesGroeger/vim-bookmarks'
+Plugin 'Raimondi/delimitMate'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'Yggdroot/indentLine'
+Plugin 'compactcode/open.vim'
+Plugin 'compactcode/alternate.vim'
 
 " Emmet map
 let g:user_emmet_leader_key='<C-E>'
@@ -176,6 +177,7 @@ filetype plugin indent on
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='wombat'
+let g:airline#themes#base16#constant = 1
 
 " Refresh File
 nnoremap <leader>r :e<CR>
@@ -201,10 +203,6 @@ let g:ctrlp_custom_ignore = {
 
 " Clear Search Highlight
 map <F3> :let @/ = ""<CR>
-
-" NERDTree
-" map <C-n> :NERDTreeToggle<CR>
-" map <F7> :NERDTreeToggle<CR>
 
 " TagBar
 nmap <F8> :TagbarToggle<CR>
@@ -287,7 +285,9 @@ highlight Pmenu ctermfg=black ctermbg=grey gui=bold
 highlight PmenuSel ctermfg=yellow ctermbg=darkgrey gui=bold
 
 " Cursor Line
-highlight CursorLine ctermbg=darkgrey ctermfg=white
+highlight CursorLine ctermbg=darkgrey ctermfg=black
+au InsertLeave * hi CursorLine ctermbg=green ctermfg=black
+au InsertEnter * hi CursorLine ctermbg=NONE ctermfg=NONE
 
 " Number Column
 highlight LineNr ctermfg=green ctermbg=black gui=bold
@@ -309,9 +309,9 @@ nmap <F9> :call ToggleFlog()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VimShell
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>shell :VimShell -buffer-name=Console<CR>
+map <leader>sh :VimShell -buffer-name=Console<CR>
 
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+" let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 if has('win32') || has('win64')
   " Display user name on Windows.
   let g:vimshell_prompt = $USERNAME."% "
@@ -357,7 +357,7 @@ endif
 
 call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'ignore_pattern', join([
-      \ '\.git/',
+      \ '\.git/', '\.azk', "tmp/", "\.tmp"
       \ ], '\|'))
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -381,8 +381,6 @@ function! s:unite_settings()
   nmap <buffer> <ESC> <Plug>(unite_exit)
 endfunction
 
-let g:extra_whitespace_ignored_filetypes = ['vimfiler', 'unite']
-
 " Bookmarks
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Bookmarks
@@ -395,6 +393,7 @@ highlight BookmarkAnnotationLine ctermbg=2 ctermfg=NONE
 
 let g:bookmark_sign = '♥'
 let g:bookmark_highlight_lines = 0
+let g:bookmark_auto_save_file = $HOME.'/.vim/.cache/vim-bookmarks'
 
 nmap <Leader>b <Plug>BookmarkToggle
 nmap <Leader>bi <Plug>BookmarkAnnotate
@@ -403,3 +402,18 @@ nmap <Leader>bn <Plug>BookmarkNext
 nmap <Leader>bp <Plug>BookmarkPrev
 nmap <Leader>bc <Plug>BookmarkClear
 nmap <Leader>bx <Plug>BookmarkClearAll
+
+" Easy Motion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Easy Motion
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Leader> <Plug>(easymotion-prefix)
+
+let g:indentLine_char = '→'
+let g:indentLine_color_term = 16
+let g:indentLine_enabled = 1
+let g:indentLine_noConcealCursor = 1
+map <leader>u :IndentLinesToggle<CR>
+
+map <Leader>test :Open(alternate#FindAlternate())<CR>
+map <Leader>testV :OpenVertical(alternate#FindAlternate())<CR>
