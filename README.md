@@ -132,6 +132,9 @@ $ sudo apt-get install ctags
 
 Install Powerline: https://github.com/Lokaltog/powerline-fonts
 
+# Cheat Gist
+
+[Cheat-Gist](https://gist.github.com/dlanileonardo/8d98b0cd12a8431db060)
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/dlanileonardo/vimfiles/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
