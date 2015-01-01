@@ -285,9 +285,9 @@ highlight Pmenu ctermfg=black ctermbg=grey gui=bold
 highlight PmenuSel ctermfg=yellow ctermbg=darkgrey gui=bold
 
 " Cursor Line
-highlight CursorLine ctermbg=darkgrey ctermfg=black
+highlight CursorLine ctermbg=green ctermfg=black
 au InsertLeave * hi CursorLine ctermbg=green ctermfg=black
-au InsertEnter * hi CursorLine ctermbg=NONE ctermfg=NONE
+au InsertEnter * hi CursorLine ctermbg=red ctermfg=black
 
 " Number Column
 highlight LineNr ctermfg=green ctermbg=black gui=bold
@@ -342,10 +342,7 @@ let g:vimfiler_marked_file_icon = '✓'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Unite
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:unite_enable_start_insert = 1
-let g:unite_split_rule = "botright"
 let g:unite_force_overwrite_statusline = 0
-let g:unite_winheight = 10
 let g:unite_source_history_yank_enable = 1
 let g:unite_data_directory='~/.vim/.cache/unite'
 
@@ -355,16 +352,24 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt=''
 endif
 
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/', '\.azk', "tmp/", "\.tmp"
-      \ ], '\|'))
+call unite#custom#profile('default', 'context', {
+      \ 'start_insert': 1,
+      \ 'winheight': 10,
+      \ 'direction': 'botright',
+      \ 'split_rule': 'botright',
+      \ 'cursor_line_highlight' : 'CursorLine' 
+\ })
+call unite#custom#profile('source/grep', 'context', {
+      \ 'no_quit': 1
+      \ })
+call unite#custom#source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+      \ 'ignore_pattern', join(['\.git/', '\.azk', "tmp/", "\.tmp"],
+      \ '\|'))
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#custom#profile('default', 'context', { 'cursor_line_highlight' : 'CursorLine' })
 
-nnoremap <C-P> :<C-u>Unite -buffer-name=files -profile-name=default -start-insert buffer file_rec/async:!<cr>
+nnoremap <C-P> :<C-u>Unite -buffer-name=files -profile-name=default buffer -hide-source-names file_rec/async:!<cr>
 nnoremap <space>f :Unite grep:.<cr>
 nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>s :Unite -quick-match buffer<cr>
@@ -378,7 +383,6 @@ function! s:unite_settings()
   imap <silent><buffer><expr> <C-x> unite#do_action('split')
   imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
   imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-
   nmap <buffer> <ESC> <Plug>(unite_exit)
 endfunction
 
