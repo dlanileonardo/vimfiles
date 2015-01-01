@@ -362,8 +362,9 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
+call unite#custom#profile('default', 'context', { 'cursor_line_highlight' : 'CursorLine' })
 
-nnoremap <C-P> :<C-u>Unite -buffer-name=files -start-insert buffer file_rec/async:!<cr>
+nnoremap <C-P> :<C-u>Unite -buffer-name=files -profile-name=default -start-insert buffer file_rec/async:!<cr>
 nnoremap <space>f :Unite grep:.<cr>
 nnoremap <space>y :Unite history/yank<cr>
 nnoremap <space>s :Unite -quick-match buffer<cr>
