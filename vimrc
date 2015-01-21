@@ -182,30 +182,13 @@ let g:airline#themes#base16#constant = 1
 " Refresh File
 nnoremap <leader>r :e<CR>
 
-" Gundo
-nnoremap <F5> :GundoToggle<CR>
-
-" bufexplorer
-nnoremap <F6> :BufExplorerHorizontalSplit<CR>
-
-" tComment
-map <C-c> :TComment<CR>
 
 " tNumber Line
 nnoremap <F4> :set nonumber!<CR>
 
-" CtrlP
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip " ignore file (OSX/Linux)
-let g:ctrlp_custom_ignore = {
-      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-      \ 'file': '\v\.(exe|so|dll)$'
-      \ }
-
 " Clear Search Highlight
 map <F3> :let @/ = ""<CR>
 
-" TagBar
-nmap <F8> :TagbarToggle<CR>
 
 " convenient viewport switching
 map <C-h> <C-w>j
@@ -239,6 +222,9 @@ nmap <leader><space> :noh<cr>
 
 " start ag search
 nnoremap <leader>a :Ag 
+
+" remove unwanted spaces
+nmap <leader>rs :%s/\s\+$//<cr>
 
 " buffer - moving around
 map <C-Left> :bprevious<CR>
@@ -296,7 +282,9 @@ highlight CursorLineNr ctermfg=black ctermbg=green gui=bold
 " Gutter / Signs
 highlight SignColumn ctermbg=black guibg=black
 
-" Flog Colors
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Flog
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :let g:flog_low_color_hl = "term=standout ctermfg=green ctermbg=black guifg=green guibg=black"
 :let g:flog_medium_color_hl = "term=standout ctermfg=yellow ctermbg=black guifg=yellow guibg=black"
 :let g:flog_high_color_hl = "term=standout cterm=bold ctermfg=red ctermbg=black gui=bold guifg=red guibg=black"
@@ -305,7 +293,26 @@ highlight SignColumn ctermbg=black guibg=black
 :let g:flog_enable=0
 nmap <F9> :call ToggleFlog()<CR>
 
-" VimShell
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Gundo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <F5> :GundoToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => BufExplorer
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <F6> :BufExplorerHorizontalSplit<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => tComment
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <C-c> :TComment<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => TagBar
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <F8> :TagbarToggle<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VimShell
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -320,7 +327,6 @@ else
   let g:vimshell_prompt = $USER."% "
 endif
 
-" VimFiler
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VimFIler
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -338,7 +344,6 @@ let g:vimfiler_file_icon = '-'
 let g:vimfiler_readonly_file_icon = '✗'
 let g:vimfiler_marked_file_icon = '✓'
 
-" Unite
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Unite
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -386,7 +391,6 @@ function! s:unite_settings()
   nmap <buffer> <ESC> <Plug>(unite_exit)
 endfunction
 
-" Bookmarks
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Bookmarks
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -408,7 +412,6 @@ nmap <Leader>bp <Plug>BookmarkPrev
 nmap <Leader>bc <Plug>BookmarkClear
 nmap <Leader>bx <Plug>BookmarkClearAll
 
-" Easy Motion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Easy Motion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -422,3 +425,8 @@ map <leader>u :IndentLinesToggle<CR>
 
 map <Leader>test :Open(alternate#FindAlternate())<CR>
 map <Leader>testV :OpenVertical(alternate#FindAlternate())<CR>
+
+highlight DiffAdd    cterm=bold ctermfg=black ctermbg=blue gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=black ctermbg=red gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=black ctermbg=yellow gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=black ctermbg=white gui=none guifg=bg guibg=Red
