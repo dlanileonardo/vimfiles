@@ -137,7 +137,7 @@ Plugin 'tomtom/checksyntax_vim' " Check Syntax of files on Saves
 " file navigation/search
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimshell.vim'
+" Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimfiler.vim'
 Plugin 'jlanzarotta/bufexplorer' " search for files that have been changed
 Plugin 'rking/ag.vim' " search for a pattern through the directories (need to install the_silver_searcher)
@@ -150,7 +150,8 @@ Plugin 'scrooloose/syntastic' " syntax analyzer
 Plugin 'tpope/vim-fugitive' " Vim + Git
 Plugin 'tpope/vim-surround' " edit what's surrounding a snippet of code
 Plugin 'tpope/vim-abolish' " find/replace on steroids
-Plugin 'Valloric/YouCompleteMe' " autocomplete (needs to install and configure cmake)
+" Plugin 'Valloric/YouCompleteMe' " autocomplete (needs to install and configure cmake)
+Plugin 'ervandew/supertab'
 Plugin 'tomtom/tcomment_vim' " comment code
 Plugin 'tpope/vim-endwise' " close 'if', 'def' etc
 Plugin 'vasconcelloslf/vim-interestingwords' " Like Sublime Highlight Words
@@ -244,6 +245,7 @@ noremap <C-Up> :tabnew<CR>
 " vmap <c-s> <Esc><c-s>gv
 " imap <c-s> <Esc><c-s>
 
+autocmd BufWritePre * :%s/\s\+$//e
 nmap <F10> :update<CR>
 vmap <F10> <Esc><F10>gv
 imap <F10> <c-o><F10>
@@ -350,16 +352,18 @@ let g:vimfiler_marked_file_icon = '✓'
 let g:unite_force_overwrite_statusline = 0
 let g:unite_source_history_yank_enable = 1
 let g:unite_data_directory='~/.vim/.cache/unite'
+let g:unite_source_rec_unit = 250
 
 if executable('ag')
-  let g:unite_source_grep_command='ag'
-  let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
-  let g:unite_source_grep_recursive_opt=''
+  let g:unite_source_rec_async_command= 'ag --follow --nocolor --nogroup --hidden -g ""'
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nocolor --column --nogroup --nogroup -S -C4'
+  let g:unite_source_grep_recursive_opt = ''
 endif
 
 call unite#custom#profile('default', 'context', {
       \ 'start_insert': 1,
-      \ 'winheight': 10,
+      \ 'winheight': 15,
       \ 'direction': 'botright',
       \ 'split_rule': 'botright',
       \ 'cursor_line_highlight' : 'CursorLine' 
