@@ -1,5 +1,5 @@
 " required
-set nocompatible 
+set nocompatible
 
 syntax on
 
@@ -32,7 +32,7 @@ set shiftround " round the indent to shiftwidth (when at 3 spaces, and I hit > g
 set shiftwidth=2 " auto-indent amount when using >> <<
 set softtabstop=2 " when hitting tab or backspace, how many spaces should a tab be (see expandtab)
 set cursorline " draws a horizontal highlight (or underline, depending on your colorscheme) on the line your cursor is currently on.
-set showmatch " when your cursor moves over a parenthesis-like character, the matching one will be highlighted as well. 
+set showmatch " when your cursor moves over a parenthesis-like character, the matching one will be highlighted as well.
 set novisualbell " Disable visual blink
 
 let loaded_matchparen=1 " match paranthesis
@@ -137,7 +137,7 @@ Plugin 'tomtom/checksyntax_vim' " Check Syntax of files on Saves
 " file navigation/search
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
-" Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimfiler.vim'
 Plugin 'jlanzarotta/bufexplorer' " search for files that have been changed
 Plugin 'rking/ag.vim' " search for a pattern through the directories (need to install the_silver_searcher)
@@ -222,7 +222,7 @@ nmap <leader>wl mQgewvu`Q
 nmap <leader><space> :noh<cr>
 
 " start ag search
-nnoremap <leader>a :Ag 
+nnoremap <leader>a :Ag
 
 " remove unwanted spaces
 nmap <leader>rs :%s/\s\+$//<cr>
@@ -366,7 +366,7 @@ call unite#custom#profile('default', 'context', {
       \ 'winheight': 15,
       \ 'direction': 'botright',
       \ 'split_rule': 'botright',
-      \ 'cursor_line_highlight' : 'CursorLine' 
+      \ 'cursor_line_highlight' : 'CursorLine'
 \ })
 call unite#custom#profile('source/grep', 'context', {
       \ 'no_quit': 1
