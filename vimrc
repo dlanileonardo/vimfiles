@@ -35,6 +35,9 @@ set cursorline " draws a horizontal highlight (or underline, depending on your c
 set showmatch " when your cursor moves over a parenthesis-like character, the matching one will be highlighted as well.
 set novisualbell " Disable visual blink
 
+" Transparent Background
+hi Normal ctermbg=none
+
 let loaded_matchparen=1 " match paranthesis
 
 " GUI-only defaults
@@ -87,6 +90,9 @@ set sidescroll=1
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
+" enable hightlight for markdown
+au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown
+
 " tabs
 set expandtab " no real tabs!
 let g:SuperTabDefaultCompletionType = 'context'
@@ -121,6 +127,7 @@ Plugin 'gmarik/Vundle.vim' " Vundle itself
 Plugin 'bling/vim-airline' " bottom bar + tabs
 Plugin 'edkolev/tmuxline.vim' " I'm still not sure about what it really does
 Plugin 'bling/vim-bufferline'
+" Plugin 'fatih/vim-go'
 
 " color schemes and code highlighting
 Plugin 'chriskempson/base16-vim'
@@ -133,6 +140,7 @@ Plugin 'cakebaker/scss-syntax.vim' " SCSS highlighting
 Plugin 'groenewege/vim-less'
 Plugin 'slim-template/vim-slim' " Slim highlighting
 Plugin 'tomtom/checksyntax_vim' " Check Syntax of files on Saves
+Plugin 'blueyed/vim-diminactive'
 
 " file navigation/search
 Plugin 'Shougo/vimproc.vim'
@@ -150,7 +158,6 @@ Plugin 'scrooloose/syntastic' " syntax analyzer
 Plugin 'tpope/vim-fugitive' " Vim + Git
 Plugin 'tpope/vim-surround' " edit what's surrounding a snippet of code
 Plugin 'tpope/vim-abolish' " find/replace on steroids
-" Plugin 'Valloric/YouCompleteMe' " autocomplete (needs to install and configure cmake)
 Plugin 'ervandew/supertab'
 Plugin 'tomtom/tcomment_vim' " comment code
 Plugin 'tpope/vim-endwise' " close 'if', 'def' etc
@@ -165,7 +172,6 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Yggdroot/indentLine'
 Plugin 'compactcode/open.vim'
-Plugin 'compactcode/alternate.vim'
 
 " Emmet map
 let g:user_emmet_leader_key='<C-E>'
@@ -421,6 +427,8 @@ nmap <Leader>bx <Plug>BookmarkClearAll
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <Leader> <Plug>(easymotion-prefix)
 
+let g:EasyMotion_smartcase = 1
+
 let g:indentLine_char = '→'
 let g:indentLine_color_term = 16
 let g:indentLine_enabled = 1
@@ -434,3 +442,10 @@ highlight DiffAdd    cterm=bold ctermfg=black ctermbg=blue gui=none guifg=bg gui
 highlight DiffDelete cterm=bold ctermfg=black ctermbg=red gui=none guifg=bg guibg=Red
 highlight DiffChange cterm=bold ctermfg=black ctermbg=yellow gui=none guifg=bg guibg=Red
 highlight DiffText   cterm=bold ctermfg=black ctermbg=white gui=none guifg=bg guibg=Red
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Dim Active
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:diminactive_use_colorcolumn = 1
+" let g:airline#extensions#tabline#enabled = 1
+" let g:tmux_navigator_no_mappings = 1
