@@ -165,7 +165,7 @@ Plugin 'vasconcelloslf/vim-interestingwords' " Like Sublime Highlight Words
 Plugin 'vim-scripts/PreserveNoEOL' " Prevent remove EOL in Final Lines
 Plugin 'terryma/vim-multiple-cursors' " Multi Cursors Like Sublime
 Plugin 'mattn/emmet-vim' " Emmet =]
-Plugin 'sentientmonkey/vim-flog'
+" Plugin 'sentientmonkey/vim-flog'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'MattesGroeger/vim-bookmarks'
 Plugin 'Raimondi/delimitMate'
@@ -189,13 +189,11 @@ let g:airline#themes#base16#constant = 1
 " Refresh File
 nnoremap <leader>r :e<CR>
 
-
 " tNumber Line
 nnoremap <F4> :set nonumber!<CR>
 
 " Clear Search Highlight
 map <F3> :let @/ = ""<CR>
-
 
 " convenient viewport switching
 map <C-h> <C-w>j
@@ -368,18 +366,18 @@ if executable('ag')
 endif
 
 call unite#custom#profile('default', 'context', {
-      \ 'start_insert': 1,
-      \ 'winheight': 15,
-      \ 'direction': 'botright',
-      \ 'split_rule': 'botright',
-      \ 'cursor_line_highlight' : 'CursorLine'
+  \ 'start_insert': 1,
+  \ 'winheight': 15,
+  \ 'direction': 'botright',
+  \ 'split_rule': 'botright',
+  \ 'cursor_line_highlight' : 'CursorLine'
 \ })
 call unite#custom#profile('source/grep', 'context', {
-      \ 'no_quit': 1
-      \ })
+  \ 'no_quit': 1
+  \ })
 call unite#custom#source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join(['\.git/', '\.azk', "tmp/", "\.tmp"],
-      \ '\|'))
+  \ 'ignore_pattern', join(['\.git/', '\.azk', "tmp/", "\.tmp", "\.mo", "\.jpg", "\.jpeg", "\.png", ".gif", "\.bmp"],
+  \ '\|'))
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
