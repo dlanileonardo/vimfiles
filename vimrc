@@ -126,11 +126,11 @@ endif
 Plugin 'gmarik/Vundle.vim' " Vundle itself
 Plugin 'bling/vim-airline' " bottom bar + tabs
 Plugin 'edkolev/tmuxline.vim' " I'm still not sure about what it really does
-Plugin 'bling/vim-bufferline'
+Plugin 'bling/vim-bufferline' " Show buffer in command bar
 " Plugin 'fatih/vim-go'
 
 " color schemes and code highlighting
-Plugin 'chriskempson/base16-vim'
+Plugin 'chriskempson/base16-vim' " Vim colors
 Plugin 'vim-ruby/vim-ruby' " Ruby highlighting
 Plugin 'jelera/vim-javascript-syntax' " JavaScript highlighting
 Plugin 'kchmck/vim-coffee-script' " CoffeeScript highlighting
@@ -139,8 +139,8 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'cakebaker/scss-syntax.vim' " SCSS highlighting
 Plugin 'groenewege/vim-less'
 Plugin 'slim-template/vim-slim' " Slim highlighting
-Plugin 'tomtom/checksyntax_vim' " Check Syntax of files on Saves
-Plugin 'blueyed/vim-diminactive'
+Plugin 'gregsexton/MatchTag'
+Plugin 'scrooloose/syntastic' " syntax analyzer
 
 " file navigation/search
 Plugin 'Shougo/vimproc.vim'
@@ -154,7 +154,6 @@ Plugin 'skwp/greplace.vim'
 
 " utils
 Plugin 'sjl/gundo.vim' " keep tracking of all undos
-Plugin 'scrooloose/syntastic' " syntax analyzer
 Plugin 'tpope/vim-fugitive' " Vim + Git
 Plugin 'tpope/vim-surround' " edit what's surrounding a snippet of code
 Plugin 'tpope/vim-abolish' " find/replace on steroids
@@ -165,13 +164,15 @@ Plugin 'vasconcelloslf/vim-interestingwords' " Like Sublime Highlight Words
 Plugin 'vim-scripts/PreserveNoEOL' " Prevent remove EOL in Final Lines
 Plugin 'terryma/vim-multiple-cursors' " Multi Cursors Like Sublime
 Plugin 'mattn/emmet-vim' " Emmet =]
-" Plugin 'sentientmonkey/vim-flog'
+Plugin 'sentientmonkey/vim-flog'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'MattesGroeger/vim-bookmarks'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Yggdroot/indentLine'
 Plugin 'compactcode/open.vim'
+Plugin 'vim-scripts/SQLUtilities'
+Plugin 'vim-scripts/Align'
 
 " Emmet map
 let g:user_emmet_leader_key='<C-E>'
@@ -376,7 +377,7 @@ call unite#custom#profile('source/grep', 'context', {
   \ 'no_quit': 1
   \ })
 call unite#custom#source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-  \ 'ignore_pattern', join(['\.git/', '\.azk', "tmp/", "\.tmp", "\.mo", "\.jpg", "\.jpeg", "\.png", ".gif", "\.bmp"],
+  \ 'ignore_pattern', join(['\.git/', '\.azk', 'tmp/', '\.tmp', '\.mo', '\.jpg', '\.jpeg', '\.png', '.gif', '\.bmp'],
   \ '\|'))
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -447,3 +448,23 @@ highlight DiffText   cterm=bold ctermfg=black ctermbg=white gui=none guifg=bg gu
 let g:diminactive_use_colorcolumn = 1
 " let g:airline#extensions#tabline#enabled = 1
 " let g:tmux_navigator_no_mappings = 1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Syntastic
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 4
+
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+
+let g:syntastic_style_error_symbol = "s✗"
+let g:syntastic_style_warning_symbol = "s⚠"
+
+hi SpellBad ctermfg=000 ctermbg=001 guifg=#990000 guibg=#990000
+hi SpellCap ctermfg=000 ctermbg=003 guifg=#990000 guibg=#990000
+hi SyntasticError ctermfg=000 ctermbg=001 guifg=#990000 guibg=#990000
+hi SyntasticWarning ctermfg=000 ctermbg=003 guifg=#990000 guibg=#990000
