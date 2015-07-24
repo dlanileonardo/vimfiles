@@ -164,7 +164,7 @@ Plugin 'vasconcelloslf/vim-interestingwords' " Like Sublime Highlight Words
 Plugin 'vim-scripts/PreserveNoEOL' " Prevent remove EOL in Final Lines
 Plugin 'terryma/vim-multiple-cursors' " Multi Cursors Like Sublime
 Plugin 'mattn/emmet-vim' " Emmet =]
-Plugin 'sentientmonkey/vim-flog'
+" Plugin 'sentientmonkey/vim-flog'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'MattesGroeger/vim-bookmarks'
 Plugin 'Raimondi/delimitMate'
@@ -452,9 +452,9 @@ let g:diminactive_use_colorcolumn = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntastic
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height = 4
 
