@@ -381,7 +381,7 @@ call unite#custom#profile('source/grep', 'context', {
   \ 'no_quit': 1
   \ })
 call unite#custom#source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-  \ 'ignore_pattern', join(['\.git/', '\.azk', 'tmp/', '\.tmp', '\.mo', '\.jpg', '\.jpeg', '\.png', '.gif', '\.bmp'],
+  \ 'ignore_pattern', join(['\.git/', '\.azk', 'tmp/', '\.tmp', '\.mo', '\.jpg', '\.jpeg', '\.png', '.gif', '\.bmp', '\.log', '/log/'],
   \ '\|'))
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
