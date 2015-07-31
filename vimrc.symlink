@@ -164,7 +164,7 @@ Plugin 'vasconcelloslf/vim-interestingwords' " Like Sublime Highlight Words
 Plugin 'vim-scripts/PreserveNoEOL' " Prevent remove EOL in Final Lines
 Plugin 'terryma/vim-multiple-cursors' " Multi Cursors Like Sublime
 Plugin 'mattn/emmet-vim' " Emmet =]
-" Plugin 'sentientmonkey/vim-flog'
+Plugin 'sentientmonkey/vim-flog'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'MattesGroeger/vim-bookmarks'
 Plugin 'Raimondi/delimitMate'
@@ -173,6 +173,10 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'compactcode/open.vim'
 Plugin 'vim-scripts/SQLUtilities'
 Plugin 'vim-scripts/Align'
+Plugin 'chrisbra/csv.vim'
+" Plugin 'tpope/vim-rails'
+" Plugin 'mattn/webapi-vim'
+" Plugin 'blueyed/vim-diminactive'
 
 " Emmet map
 let g:user_emmet_leader_key='<C-E>'
@@ -468,3 +472,12 @@ hi SpellBad ctermfg=000 ctermbg=001 guifg=#990000 guibg=#990000
 hi SpellCap ctermfg=000 ctermbg=003 guifg=#990000 guibg=#990000
 hi SyntasticError ctermfg=000 ctermbg=001 guifg=#990000 guibg=#990000
 hi SyntasticWarning ctermfg=000 ctermbg=003 guifg=#990000 guibg=#990000
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Show invisible Characters
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Shortcut to rapidly toggle `set list`
+" nmap <leader>l :set list!<CR>
+"
+" " Use the same symbols as TextMate for tabstops and EOLs
+" set listchars=tab:▸\ ,eol:¬
