@@ -82,13 +82,6 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
-" scrolling
-set scrolloff=8 " start scrolling when we're 8 lines away from margins
-set sidescrolloff=15
-set sidescroll=1
-
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 " enable hightlight for markdown
 au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=markdown
@@ -127,7 +120,6 @@ Plugin 'gmarik/Vundle.vim' " Vundle itself
 Plugin 'bling/vim-airline' " bottom bar + tabs
 Plugin 'edkolev/tmuxline.vim' " I'm still not sure about what it really does
 Plugin 'bling/vim-bufferline' " Show buffer in command bar
-" Plugin 'fatih/vim-go'
 
 " color schemes and code highlighting
 Plugin 'chriskempson/base16-vim' " Vim colors
@@ -135,21 +127,21 @@ Plugin 'vim-ruby/vim-ruby' " Ruby highlighting
 Plugin 'jelera/vim-javascript-syntax' " JavaScript highlighting
 Plugin 'kchmck/vim-coffee-script' " CoffeeScript highlighting
 Plugin 'skammer/vim-css-color' " CSS highlighting
-Plugin 'hail2u/vim-css3-syntax'
+Plugin 'hail2u/vim-css3-syntax' " Add CSS3 syntax support to vim's built-in `syntax/css.vim`.
 Plugin 'cakebaker/scss-syntax.vim' " SCSS highlighting
-Plugin 'groenewege/vim-less'
+Plugin 'groenewege/vim-less' " vim syntax for LESS (dynamic CSS)
 Plugin 'slim-template/vim-slim' " Slim highlighting
-Plugin 'gregsexton/MatchTag'
+Plugin 'gregsexton/MatchTag' " Vim's MatchParen for HTML tags
 Plugin 'scrooloose/syntastic' " syntax analyzer
 
 " file navigation/search
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimshell.vim'
-Plugin 'Shougo/vimfiler.vim'
+Plugin 'Shougo/vimproc.vim' " Interactive command execution in Vim.
+Plugin 'Shougo/unite.vim' " Unite and create user interfaces
+Plugin 'Shougo/vimshell.vim' " Powerful shell implemented by vim.
+Plugin 'Shougo/vimfiler.vim' " Powerful file explorer implemented by Vim script
 Plugin 'jlanzarotta/bufexplorer' " search for files that have been changed
 Plugin 'rking/ag.vim' " search for a pattern through the directories (need to install the_silver_searcher)
-Plugin 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar' " Vim plugin that displays tags in a window, ordered by scope
 Plugin 'skwp/greplace.vim'
 
 " utils
@@ -157,27 +149,28 @@ Plugin 'sjl/gundo.vim' " keep tracking of all undos
 Plugin 'tpope/vim-fugitive' " Vim + Git
 Plugin 'tpope/vim-surround' " edit what's surrounding a snippet of code
 Plugin 'tpope/vim-abolish' " find/replace on steroids
-Plugin 'ervandew/supertab'
+Plugin 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
 Plugin 'tomtom/tcomment_vim' " comment code
 Plugin 'tpope/vim-endwise' " close 'if', 'def' etc
 Plugin 'vasconcelloslf/vim-interestingwords' " Like Sublime Highlight Words
 Plugin 'vim-scripts/PreserveNoEOL' " Prevent remove EOL in Final Lines
 Plugin 'terryma/vim-multiple-cursors' " Multi Cursors Like Sublime
 Plugin 'mattn/emmet-vim' " Emmet =]
-Plugin 'sentientmonkey/vim-flog'
-Plugin 'terryma/vim-smooth-scroll'
-Plugin 'MattesGroeger/vim-bookmarks'
-Plugin 'Raimondi/delimitMate'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'Yggdroot/indentLine'
-Plugin 'compactcode/open.vim'
-Plugin 'vim-scripts/SQLUtilities'
-Plugin 'vim-scripts/Align'
-Plugin 'chrisbra/csv.vim'
-Plugin 'mhinz/vim-hugefile'
+Plugin 'sentientmonkey/vim-flog' " Vim Flog Plugin
+Plugin 'terryma/vim-smooth-scroll' " Make scrolling in Vim more pleasant
+Plugin 'MattesGroeger/vim-bookmarks' " Vim bookmark plugin
+Plugin 'Raimondi/delimitMate' " Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc.
+Plugin 'Lokaltog/vim-easymotion' " Vim motions on speed!
+Plugin 'Yggdroot/indentLine' " A vim plugin to display the indention levels with thin vertical lines
+Plugin 'compactcode/open.vim' " Open files that were found by an external command.
+Plugin 'vim-scripts/SQLUtilities' " SQL utilities - Formatting, generate - columns lists, procedures for databases
+Plugin 'vim-scripts/Align' " Help folks to align text, eqns, declarations, tables, etc
+Plugin 'chrisbra/csv.vim' " A Filetype plugin for csv files
+Plugin 'mhinz/vim-hugefile' " Speed up loading of large files.
 " Plugin 'tpope/vim-rails'
 " Plugin 'mattn/webapi-vim'
 " Plugin 'blueyed/vim-diminactive'
+" Plugin 'fatih/vim-go'
 
 " Emmet map
 let g:user_emmet_leader_key='<C-E>'
@@ -233,6 +226,7 @@ nmap <leader><space> :noh<cr>
 
 " start ag search
 nnoremap <leader>a :Ag
+nnoremap <leader>gs :Gsearch
 
 " remove unwanted spaces
 nmap <leader>rs :%s/\s\+$//<cr>
@@ -482,3 +476,20 @@ hi SyntasticWarning ctermfg=000 ctermbg=003 guifg=#990000 guibg=#990000
 "
 " " Use the same symbols as TextMate for tabstops and EOLs
 " set listchars=tab:▸\ ,eol:¬
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Gsearch
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Smooth Scroll
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set scrolloff=8 " start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
+
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+
