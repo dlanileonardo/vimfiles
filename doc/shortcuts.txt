@@ -154,20 +154,35 @@ CONTENTS                                                  *shortcuts-contents*
 ------------------------------------------------------------------------------
 10.1 unite.vim                                                    *ShortUnite*
 
+  <Ctrl>+p    Instant File Search per name
+  <space>+f   File Search per content
+  <space>+y   Yank Search
+  <space>+s   Buffer Search
+
 ------------------------------------------------------------------------------
 10.2 vimshell.vim                                              *ShortVimShell*
+
+  \sh         Open a Shell
 
 ------------------------------------------------------------------------------
 10.3 vimfiler.vim                                              *ShortVimFiler*
 
+  <F7>        Open VimFiler
+
 ------------------------------------------------------------------------------
 10.4 Bufexplorer                                           *ShortBufeExplorer*
+
+  <F6>        Open Bufexplorer
 
 ------------------------------------------------------------------------------
 10.5 Tagbar                                                      *ShortTagBar*
 
+  <F8>        Open TagBar
+
 ------------------------------------------------------------------------------
 10.6 emmet-vim                                                    *ShortEmmet*
+
+  <Ctrl>+y,   Trigger to snippet
 
 ------------------------------------------------------------------------------
 10.7 Surround                                                  *ShortSurround*
@@ -184,10 +199,20 @@ CONTENTS                                                  *shortcuts-contents*
 ------------------------------------------------------------------------------
 10.11 tcomment_vim                                             *ShortTComment*
 
+  <Ctrl>-c    Toggle comment line
+
 ------------------------------------------------------------------------------
 10.12 vim-easymotion                                      *ShortVimEasyMotion*
 
+   \s         Find character
+              1. Type Character to locate
+              2. Type Target Location
+
 ------------------------------------------------------------------------------
 10.13 vim-multiple-cursors                            *ShortVimMultipleCursor*
+
+  <Ctrl>-n    Select next Ocurrence
+  <Ctrl>-p    Clear current virual cursor and go back to the previous
+  <Ctrl>-x    Skip next Ocurrence
 
 ==============================================================================

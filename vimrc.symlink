@@ -175,7 +175,7 @@ Plugin 'mhinz/vim-hugefile' " Speed up loading of large files.
 :helptags ~/.vim/doc
 
 " Emmet map
-let g:user_emmet_leader_key='<C-E>'
+" let g:user_emmet_leader_key='<C-E>'
 
 " end Vundle
 call vundle#end()
