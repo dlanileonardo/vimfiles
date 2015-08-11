@@ -172,6 +172,8 @@ Plugin 'mhinz/vim-hugefile' " Speed up loading of large files.
 " Plugin 'blueyed/vim-diminactive'
 " Plugin 'fatih/vim-go'
 
+:helptags ~/.vim/doc
+
 " Emmet map
 let g:user_emmet_leader_key='<C-E>'
 
