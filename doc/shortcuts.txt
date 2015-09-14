@@ -154,10 +154,12 @@ CONTENTS                                                  *shortcuts-contents*
 ------------------------------------------------------------------------------
 10.1 unite.vim                                                    *ShortUnite*
 
+  <Ctrl>+o    Show Menu Options
   <Ctrl>+p    Instant File Search per name
-  <space>+f   File Search per content
-  <space>+y   Yank Search
-  <space>+s   Buffer Search
+  <Ctrl>+i    Instant Code Search
+  <Ctrl>+l    Instant Search Line by Code
+  <Ctrl>+k    Show TasksList TODO, BUG, ERROR, FIXME, etc...
+  <End>       To type search pattern
 
 ------------------------------------------------------------------------------
 10.2 vimshell.vim                                              *ShortVimShell*
@@ -168,6 +170,14 @@ CONTENTS                                                  *shortcuts-contents*
 10.3 vimfiler.vim                                              *ShortVimFiler*
 
   <F7>        Open VimFiler
+
+  In vim filer:
+    o         Expand Folder
+    d         Delete File
+    r         Rename File or Folder
+    m         Move File or Folder
+    N         New File
+    K         New Folder
 
 ------------------------------------------------------------------------------
 10.4 Bufexplorer                                           *ShortBufeExplorer*
