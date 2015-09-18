@@ -551,3 +551,8 @@ let g:airline_theme='wombat'
 let g:airline#themes#base16#constant = 1
 " let g:airline#extensions#tabline#show_buffers = 1
 " let g:airline#extensions#tabline#excludes = ['unite']
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Code Search
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:unite_source_codesearch_ignore_case = 1
