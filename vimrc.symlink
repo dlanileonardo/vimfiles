@@ -117,11 +117,11 @@ syntax on
 
 filetype off
 
-colorscheme base16-default " set colorscheme
 let base16colorspace=16
 set background=dark
 set t_Co=16
 set t_ut=
+colorscheme base16-twilight " set colorscheme
 set encoding=utf-8 " set charset encoding
 " set number "show line numbers
 set history=1000 " store lots of :cmdline history
@@ -147,8 +147,6 @@ set cursorline " draws a horizontal highlight (or underline, depending on your c
 set showmatch " when your cursor moves over a parenthesis-like character, the matching one will be highlighted as well.
 set novisualbell " Disable visual blink
 
-" Transparent Background
-hi Normal ctermbg=none
 
 let loaded_matchparen=1 " match paranthesis
 
@@ -316,29 +314,15 @@ if has("gui_macvim")
   noremap <D-9> :tabn 9<CR>
 endif
 
-" YouCompleteMe
-highlight Pmenu ctermfg=black ctermbg=grey gui=bold
-highlight PmenuSel ctermfg=yellow ctermbg=darkgrey gui=bold
 
-" Cursor Line
-highlight CursorLine ctermbg=green ctermfg=black
-au InsertLeave * hi CursorLine ctermbg=green ctermfg=black
-au InsertEnter * hi CursorLine ctermbg=red ctermfg=black
-
-" Number Column
-highlight LineNr ctermfg=green ctermbg=black gui=bold
-highlight CursorLineNr ctermfg=black ctermbg=green gui=bold
-
-" Gutter / Signs
-highlight SignColumn ctermbg=black guibg=black
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Base16 Theme
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:base16_shell_path="~/.dotfiles/base16-builder/output/shell/"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Flog
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:let g:flog_low_color_hl = "term=standout ctermfg=green ctermbg=black guifg=green guibg=black"
-:let g:flog_medium_color_hl = "term=standout ctermfg=yellow ctermbg=black guifg=yellow guibg=black"
-:let g:flog_high_color_hl = "term=standout cterm=bold ctermfg=red ctermbg=black gui=bold guifg=red guibg=black"
-:let s:background_hl = "guifg=white guibg=black gui=NONE"
 " disable default
 :let g:flog_enable=0
 nmap <F9> :call ToggleFlog()<CR>
@@ -463,12 +447,6 @@ call SourceMyScripts()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Bookmarks
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-highlight BookmarkSign ctermbg=NONE ctermfg=1
-highlight BookmarkAnnotationSign ctermbg=NONE ctermfg=2
-
-highlight BookmarkLine ctermbg=1 ctermfg=NONE
-highlight BookmarkAnnotationLine ctermbg=2 ctermfg=NONE
-
 let g:bookmark_sign = '♥'
 let g:bookmark_highlight_lines = 0
 let g:bookmark_auto_save_file = $HOME.'/.vim/.cache/vim-bookmarks'
@@ -491,10 +469,6 @@ let g:EasyMotion_smartcase = 1
 map <Leader>test :Open(alternate#FindAlternate())<CR>
 map <Leader>testV :OpenVertical(alternate#FindAlternate())<CR>
 
-highlight DiffAdd    cterm=bold ctermfg=black ctermbg=blue gui=none guifg=bg guibg=Red
-highlight DiffDelete cterm=bold ctermfg=black ctermbg=red gui=none guifg=bg guibg=Red
-highlight DiffChange cterm=bold ctermfg=black ctermbg=yellow gui=none guifg=bg guibg=Red
-highlight DiffText   cterm=bold ctermfg=black ctermbg=white gui=none guifg=bg guibg=Red
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => IndentLines
@@ -529,10 +503,6 @@ let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_style_error_symbol = "s✗"
 let g:syntastic_style_warning_symbol = "s⚠"
 
-hi SpellBad ctermfg=000 ctermbg=001 guifg=#990000 guibg=#990000
-hi SpellCap ctermfg=000 ctermbg=003 guifg=#990000 guibg=#990000
-hi SyntasticError ctermfg=000 ctermbg=001 guifg=#990000 guibg=#990000
-hi SyntasticWarning ctermfg=000 ctermbg=003 guifg=#990000 guibg=#990000
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Show invisible Characters
@@ -564,7 +534,7 @@ noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='wombat'
+let g:airline_theme='base16'
 let g:airline#themes#base16#constant = 1
 " let g:airline#extensions#tabline#show_buffers = 1
 " let g:airline#extensions#tabline#excludes = ['unite']
@@ -680,3 +650,51 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/snippets/'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Colors Customize
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Transparent Background
+hi Normal ctermbg=none
+
+" Syntastic
+hi SpellBad ctermfg=000 ctermbg=001 guifg=#990000 guibg=#990000
+hi SpellCap ctermfg=000 ctermbg=003 guifg=#990000 guibg=#990000
+hi SyntasticError ctermfg=000 ctermbg=001 guifg=#990000 guibg=#990000
+hi SyntasticWarning ctermfg=000 ctermbg=003 guifg=#990000 guibg=#990000
+
+" Vim Airline
+highlight DiffAdd    cterm=bold ctermfg=black ctermbg=blue gui=none guifg=bg guibg=Red
+highlight DiffDelete cterm=bold ctermfg=black ctermbg=red gui=none guifg=bg guibg=Red
+highlight DiffChange cterm=bold ctermfg=black ctermbg=yellow gui=none guifg=bg guibg=Red
+highlight DiffText   cterm=bold ctermfg=black ctermbg=white gui=none guifg=bg guibg=Red
+
+" YouCompleteMe
+highlight Pmenu ctermfg=black ctermbg=grey gui=bold
+highlight PmenuSel ctermfg=yellow ctermbg=darkgrey gui=bold
+
+" Cursor Line
+highlight CursorLine ctermbg=green ctermfg=black
+au InsertLeave * hi CursorLine ctermbg=green ctermfg=black
+au InsertEnter * hi CursorLine ctermbg=red ctermfg=black
+
+" Number Column
+highlight LineNr ctermfg=green ctermbg=black gui=bold
+highlight CursorLineNr ctermfg=black ctermbg=green gui=bold
+
+" Gutter / Signs
+highlight SignColumn ctermbg=black guibg=black
+
+" Bookmarks
+highlight BookmarkSign ctermbg=NONE ctermfg=1
+highlight BookmarkAnnotationSign ctermbg=NONE ctermfg=2
+
+highlight BookmarkLine ctermbg=1 ctermfg=NONE
+highlight BookmarkAnnotationLine ctermbg=2 ctermfg=NONE
+
+" Flog
+:let g:flog_low_color_hl = "term=standout ctermfg=green ctermbg=black guifg=green guibg=black"
+:let g:flog_medium_color_hl = "term=standout ctermfg=yellow ctermbg=black guifg=yellow guibg=black"
+:let g:flog_high_color_hl = "term=standout cterm=bold ctermfg=red ctermbg=black gui=bold guifg=red guibg=black"
+:let s:background_hl = "guifg=white guibg=black gui=NONE"
+
