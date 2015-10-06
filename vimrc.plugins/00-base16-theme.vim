@@ -2,4 +2,3 @@
 " => Base16 Theme
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:base16_shell_path="~/.dotfiles/base16-builder/output/shell/"
-
