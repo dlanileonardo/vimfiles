@@ -5,10 +5,15 @@
 hi Normal ctermbg=none
 
 " Syntastic
-hi SpellBad ctermfg=000 ctermbg=001 guifg=#990000 guibg=#990000
-hi SpellCap ctermfg=000 ctermbg=003 guifg=#990000 guibg=#990000
-hi SyntasticError ctermfg=000 ctermbg=001 guifg=#990000 guibg=#990000
-hi SyntasticWarning ctermfg=000 ctermbg=003 guifg=#990000 guibg=#990000
+hi SyntasticErrorSign ctermbg=black ctermfg=red
+hi SyntasticWarningSign ctermbg=black ctermfg=yellow
+hi SyntasticStyleErrorSign ctermbg=black ctermfg=magenta
+hi SyntasticStyleWarningSign ctermbg=black ctermfg=blue
+
+hi SpellBad ctermfg=001 ctermbg=001
+hi SpellCap ctermfg=003 ctermbg=003
+hi SyntasticError ctermfg=001 ctermbg=001
+hi SyntasticWarning ctermfg=003 ctermbg=003
 
 " Vim Airline
 highlight DiffAdd    cterm=bold ctermfg=black ctermbg=blue gui=none guifg=bg guibg=Red
@@ -23,7 +28,8 @@ highlight PmenuSel ctermfg=yellow ctermbg=darkgrey gui=bold
 " Cursor Line
 highlight CursorLine ctermbg=green ctermfg=black
 au InsertLeave * hi CursorLine ctermbg=green ctermfg=black
-au InsertEnter * hi CursorLine ctermbg=red ctermfg=black
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertChange * call InsertStatuslineColor(v:insertmode)
 
 " Number Column
 highlight LineNr ctermfg=green ctermbg=black gui=bold
@@ -44,3 +50,9 @@ highlight BookmarkAnnotationLine ctermbg=2 ctermfg=NONE
 :let g:flog_medium_color_hl = "term=standout ctermfg=yellow ctermbg=black guifg=yellow guibg=black"
 :let g:flog_high_color_hl = "term=standout cterm=bold ctermfg=red ctermbg=black gui=bold guifg=red guibg=black"
 :let s:background_hl = "guifg=white guibg=black gui=NONE"
+
+" Git Gutter
+highlight GitGutterAdd ctermbg=black ctermfg=green
+highlight GitGutterChange ctermbg=black ctermfg=blue
+highlight GitGutterDelete ctermbg=black ctermfg=red
+highlight GitGutterChangeDelete ctermbg=black ctermfg=white

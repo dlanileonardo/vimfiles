@@ -24,7 +24,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
   " core plugins
   NeoBundle 'gmarik/Vundle.vim' " Vundle itself
-  NeoBundle 'bling/vim-airline' " bottom bar + tabs
+  " NeoBundle 'bling/vim-airline' " bottom bar + tabs
+  NeoBundle 'dlanileonardo/vim-airline'
   NeoBundle 'edkolev/tmuxline.vim' " I'm still not sure about what it really does
   NeoBundle 'bling/vim-bufferline' " Show buffer in command bar
 
@@ -70,8 +71,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundle 'tpope/vim-fugitive' " Vim + Git
   NeoBundle 'tpope/vim-surround' " edit what's surrounding a snippet of code
   NeoBundle 'tpope/vim-abolish' " find/replace on steroids
-  " NeoBundle 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
   NeoBundle 'tomtom/tcomment_vim' " comment code
+  NeoBundle 'airblade/vim-gitgutter'
   NeoBundle 'tpope/vim-endwise' " close 'if', 'def' etc
   NeoBundle 'vasconcelloslf/vim-interestingwords' " Like Sublime Highlight Words
   NeoBundle 'vim-scripts/PreserveNoEOL' " Prevent remove EOL in Final Lines
