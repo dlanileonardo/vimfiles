@@ -14,3 +14,5 @@ let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_file_icon = '-'
 let g:vimfiler_readonly_file_icon = '✗'
 let g:vimfiler_marked_file_icon = '✓'
+
+let g:vimfiler_ignore_pattern = ['^\.git$', '^\.DS_Store$', '^\.', '^node_modules$', '^bower_components$']

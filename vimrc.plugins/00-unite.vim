@@ -5,6 +5,7 @@ let g:unite_force_overwrite_statusline = 0
 let g:unite_source_history_yank_enable = 1
 let g:unite_data_directory='~/.vim/.cache/unite'
 let g:unite_source_rec_unit = 250
+let g:unite_matcher_fuzzy_max_input_length = 40
 
 if executable('ag')
   let g:unite_source_rec_async_command= ['ag', '--follow', '--nocolor', '--nogroup', '--hidden',  '-g', '']
@@ -23,7 +24,8 @@ call unite#custom#profile('default', 'context', {
   \ 'winheight': 15,
   \ 'direction': 'botright',
   \ 'split_rule': 'botright',
-  \ 'cursor_line_highlight' : 'CursorLine'
+  \ 'cursor_line_highlight' : 'CursorLine',
+  \ 'ignorecase': 1
 \ })
 call unite#custom#profile('source/grep', 'context', {
   \ 'no_quit': 1

@@ -32,13 +32,13 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   " color schemes and code highlighting
   NeoBundle 'chriskempson/base16-vim' " Vim colors
   NeoBundle 'vim-ruby/vim-ruby' " Ruby highlighting
-  NeoBundle 'jelera/vim-javascript-syntax' " JavaScript highlighting
-  NeoBundle 'kchmck/vim-coffee-script' " CoffeeScript highlighting
-  NeoBundle 'skammer/vim-css-color' " CSS highlighting
-  NeoBundle 'hail2u/vim-css3-syntax' " Add CSS3 syntax support to vim's built-in `syntax/css.vim`.
-  NeoBundle 'cakebaker/scss-syntax.vim' " SCSS highlighting
-  NeoBundle 'groenewege/vim-less' " vim syntax for LESS (dynamic CSS)
-  NeoBundle 'slim-template/vim-slim' " Slim highlighting
+  " NeoBundle 'jelera/vim-javascript-syntax' " JavaScript highlighting
+  " NeoBundle 'kchmck/vim-coffee-script' " CoffeeScript highlighting
+  " NeoBundle 'skammer/vim-css-color' " CSS highlighting
+  " NeoBundle 'hail2u/vim-css3-syntax' " Add CSS3 syntax support to vim's built-in `syntax/css.vim`.
+  " NeoBundle 'cakebaker/scss-syntax.vim' " SCSS highlighting
+  " NeoBundle 'groenewege/vim-less' " vim syntax for LESS (dynamic CSS)
+  " NeoBundle 'slim-template/vim-slim' " Slim highlighting
   NeoBundle 'gregsexton/MatchTag' " Vim's MatchParen for HTML tags
   NeoBundle 'scrooloose/syntastic' " syntax analyzer
 

@@ -13,4 +13,6 @@ let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_style_error_symbol = "s✗"
 let g:syntastic_style_warning_symbol = "s⚠"
 
-let g:syntastic_quiet_messages = { "type": "style" }
+let g:syntastic_quiet_messages = {
+  \ "type": "style",
+  \ "!level": "errors" }
