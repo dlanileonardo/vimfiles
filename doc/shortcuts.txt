@@ -32,7 +32,7 @@ CONTENTS                                                  *shortcuts-contents*
     10.11 tcomment_vim:                                      |ShortTComment|
     10.12 vim-easymotion:                               |ShortVimEasyMotion|
     10.13 vim-multiple-cursors:                     |ShortVimMultipleCursor|
-    10.14 neosnippet                                            |neosnippet|
+    10.14 neosnippet                                       |ShortNeosnippet|
 
 ==============================================================================
 1. Basic Movements                                       *ShortBasicMovements*
@@ -227,7 +227,7 @@ CONTENTS                                                  *shortcuts-contents*
   <Ctrl>-x    Skip next Ocurrence
 
 ------------------------------------------------------------------------------
-10.14 neosnippet                                                  *ShortNeosnippet*
+10.14 neosnippet                                             *ShortNeosnippet*
 
   <Ctrl>-k    Select snippet or jump to next
 
