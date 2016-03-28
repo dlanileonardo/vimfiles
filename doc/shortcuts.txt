@@ -162,6 +162,8 @@ CONTENTS                                                  *shortcuts-contents*
   <Ctrl>+k    Show TasksList TODO, BUG, ERROR, FIXME, etc...
   <End>       To type search pattern
 
+  <Ctrl>+l    When Dialog Unite is Open
+
 ------------------------------------------------------------------------------
 10.2 vimshell.vim                                              *ShortVimShell*
 

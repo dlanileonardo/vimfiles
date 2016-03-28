@@ -25,7 +25,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   " core plugins
   NeoBundle 'gmarik/Vundle.vim' " Vundle itself
   " NeoBundle 'bling/vim-airline' " bottom bar + tabs
-  NeoBundle 'dlanileonardo/vim-airline'
+  NeoBundle 'vim-airline/vim-airline'
+  NeoBundle 'vim-airline/vim-airline-themes'
   NeoBundle 'edkolev/tmuxline.vim' " I'm still not sure about what it really does
   NeoBundle 'bling/vim-bufferline' " Show buffer in command bar
 
@@ -78,7 +79,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundle 'vim-scripts/PreserveNoEOL' " Prevent remove EOL in Final Lines
   NeoBundle 'terryma/vim-multiple-cursors' " Multi Cursors Like Sublime
   NeoBundle 'mattn/emmet-vim' " Emmet =]
-  NeoBundle 'sentientmonkey/vim-flog' " Vim Flog Plugin
+  " NeoBundle 'sentientmonkey/vim-flog' " Vim Flog Plugin
   NeoBundle 'terryma/vim-smooth-scroll' " Make scrolling in Vim more pleasant
   NeoBundle 'MattesGroeger/vim-bookmarks' " Vim bookmark plugin
   NeoBundle 'Raimondi/delimitMate' " Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc.
