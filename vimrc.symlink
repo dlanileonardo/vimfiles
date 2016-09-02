@@ -59,6 +59,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundle 'Shougo/neocomplete.vim'
   NeoBundle 'Shougo/neosnippet'
   NeoBundle 'Shougo/neosnippet-snippets'
+  NeoBundle 'Shougo/neopairs.vim'
 
   NeoBundle 'junkblocker/unite-codesearch'
   NeoBundle 'junkblocker/unite-tasklist'
@@ -95,6 +96,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundle 'blueyed/vim-diminactive'
   NeoBundle 'fatih/vim-go'
   " NeoBundle 'KabbAmine/zeavim.vim'
+  NeoBundle 'wakatime/vim-wakatime'
 
   " Snippets
   " NeoBundle 'tomtom/tlib_vim'

@@ -32,11 +32,11 @@ au InsertEnter * call InsertStatuslineColor(v:insertmode)
 au InsertChange * call InsertStatuslineColor(v:insertmode)
 
 " Number Column
-highlight LineNr ctermfg=green ctermbg=black gui=bold
-highlight CursorLineNr ctermfg=black ctermbg=green gui=bold
+highlight LineNr ctermfg=green ctermbg=NONE gui=bold
+highlight CursorLineNr ctermfg=NONE ctermbg=green gui=bold
 
 " Gutter / Signs
-highlight SignColumn ctermbg=black guibg=black
+highlight SignColumn ctermbg=NONE guibg=NONE
 
 " Bookmarks
 highlight BookmarkSign ctermbg=NONE ctermfg=1
@@ -52,7 +52,7 @@ highlight BookmarkAnnotationLine ctermbg=2 ctermfg=NONE
 :let s:background_hl = "guifg=white guibg=black gui=NONE"
 
 " Git Gutter
-highlight GitGutterAdd ctermbg=black ctermfg=green
-highlight GitGutterChange ctermbg=black ctermfg=blue
-highlight GitGutterDelete ctermbg=black ctermfg=red
-highlight GitGutterChangeDelete ctermbg=black ctermfg=white
+highlight GitGutterAdd ctermbg=NONE ctermfg=green
+highlight GitGutterChange ctermbg=NONE ctermfg=blue
+highlight GitGutterDelete ctermbg=NONE ctermfg=red
+highlight GitGutterChangeDelete ctermbg=NONE ctermfg=white
