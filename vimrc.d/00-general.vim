@@ -16,7 +16,7 @@ let base16colorspace=16
 set background=dark
 set t_Co=16
 set t_ut=
-colorscheme base16-twilight " set colorscheme
+colorscheme base16-default-dark " set colorscheme
 set encoding=utf-8 " set charset encoding
 " set number "show line numbers
 set history=1000 " store lots of :cmdline history

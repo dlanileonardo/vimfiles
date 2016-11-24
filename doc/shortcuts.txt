@@ -1,6 +1,8 @@
 *shortcuts.txt*  All leader and keyboard shortcusts to Plugins
 *shortcuts*
 
+  => Type Ctrl+] to Jump into Topic:
+
   by Dlani Mendes~
 
   Twitter: https://twitter.com/mrdlani
@@ -46,6 +48,8 @@ CONTENTS                                                  *shortcuts-contents*
   ^       Move to first character on lineg
   gg      Move to first line of file
   G       Move to last line of file
+  n       Next ocurrence of search matched
+  N       Previous ocurrence of search matched
 
 ------------------------------------------------------------------------------
 2. Smart Movements                                       *ShortSmartMovements*
@@ -162,7 +166,7 @@ CONTENTS                                                  *shortcuts-contents*
   <Ctrl>+k    Show TasksList TODO, BUG, ERROR, FIXME, etc...
   <End>       To type search pattern
 
-  <Ctrl>+l    When Dialog Unite is Open
+  <Ctrl>+l    Reload Reload when Dialog Unite is Open
 
 ------------------------------------------------------------------------------
 10.2 vimshell.vim                                              *ShortVimShell*
