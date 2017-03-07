@@ -96,7 +96,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundle 'blueyed/vim-diminactive'
   NeoBundle 'fatih/vim-go'
   " NeoBundle 'KabbAmine/zeavim.vim'
-  NeoBundle 'wakatime/vim-wakatime'
+  " NeoBundle 'wakatime/vim-wakatime'
 
   " Snippets
   " NeoBundle 'tomtom/tlib_vim'
