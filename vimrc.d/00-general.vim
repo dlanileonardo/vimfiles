@@ -174,9 +174,9 @@ map <C-Right> :bnext<CR>
 map <C-Down> :bdelete!<CR>
 
 " tabs - moving around, (CTRL+t to new tab)
-noremap <C-PageUp> :tabprev<CR>
-noremap <C-PageDown> :tabnext<CR>
-noremap <C-Up> :tabnew<CR>
+map <C-S-Left> :tabprev<CR>
+map <C-S-Right> :tabnext<CR>
+map <C-Up> :tabnew<CR>
 
 " noremap <leader>s :w<CR>
 " noremap <leader>S :saveas %<CR>
